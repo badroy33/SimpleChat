@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 class SignUpVIewController: UIViewController{
     
     let helloLabel = UILabel(text: "Hello, and welcome", font: UIFont.avenirNextMedium27())
@@ -30,6 +31,9 @@ class SignUpVIewController: UIViewController{
         button.contentHorizontalAlignment = .leading
         return button
     }()
+    
+    weak var delegate: AuthNavigationDelegate?
+
 
     
     override func viewDidLoad() {
@@ -38,17 +42,27 @@ class SignUpVIewController: UIViewController{
         setupConstraints()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
+    
     @objc private func signUpButtonTapped(){
+
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { (result) in
             switch result{
             case .success(let user):
-                self.showAlert(with: "Succes", messege: "Your profile has been create.")
-                print(user.email)
+//                self.showAlert(with: "Succes", messege: "Your profile has been create.")
+                self.present(SetProfileInfoViewController(currentUser: user), animated: true, completion: nil)
             case .failure(let error):
                 self.showAlert(with: "Error", messege: error.localizedDescription)
             }
+        }
+        print(#function)
+    }
+    
+    @objc private func loginButtonTapped(){
+        dismiss(animated: true) {
+            self.delegate?.tologinVC()
         }
         print(#function)
     }

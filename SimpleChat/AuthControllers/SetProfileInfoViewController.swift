@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SetProfileInfoViewController: UIViewController {
     let addPhotoView = AddPhotoView()
@@ -23,6 +24,16 @@ class SetProfileInfoViewController: UIViewController {
     let continueButton = UIButton(title: "Continue", titleColor: .white, backgroundColor: UIColor.buttonBackgroungColorPurple())
     
 
+    private var currentUser: User
+    
+    init(currentUser: User){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     
@@ -30,6 +41,24 @@ class SetProfileInfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpConstraints()
+        continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func continueButtonTapped(){
+        FirestoreService.shared.saveProfileWith(id: currentUser.uid,
+                                                email: currentUser.email!,
+                                                username: fullNameTextField.text,
+                                                avatarImageString: "Nil",
+                                                description: aboutMeTextField.text,
+                                                sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)!) { (result) in
+            switch result{
+            case .success(let muser):
+                self.showAlert(with: "Succes", messege: "Your has been loged in")
+                print(muser)
+            case .failure(let error):
+                self.showAlert(with: "Error", messege: error.localizedDescription)
+            }
+        }
     }
 
 }
@@ -81,7 +110,7 @@ struct SetProfileInfoVCProvider: PreviewProvider{
     }
     
     struct ContainerView: UIViewControllerRepresentable {
-        let setProfileInfoVC = SetProfileInfoViewController()
+        let setProfileInfoVC = SetProfileInfoViewController(currentUser: Auth.auth().currentUser!)
         
         func makeUIViewController(context: Context) -> some UIViewController {
             return setProfileInfoVC

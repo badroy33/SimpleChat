@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
     let emailTextField = OneLineTextField(font: UIFont.avenirNextMedium18())
     let passwordTextField = OneLineTextField(font: UIFont.avenirNextMedium20())
     
+    weak var delegate: AuthNavigationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,17 +39,25 @@ class LoginViewController: UIViewController {
         setUpConstraints()
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
     }
+
     
     @objc private func loginButtonTapped(){
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { (result) in
             switch result{
             case .success(let user):
                 self.showAlert(with: "Succes", messege: "Your has been loged in")
-                print(user.email)
             case .failure(let error):
                 self.showAlert(with: "Error", messege: error.localizedDescription)
             }
+        }
+        print(#function)
+    }
+    
+    @objc private func signUpButtonTapped(){
+        dismiss(animated: true) {
+            self.delegate?.toSignUpVC()
         }
         print(#function)
     }

@@ -8,9 +8,22 @@
 import UIKit
 
 struct UserModel: Hashable, Decodable {
-    let username: String
-    let avatarStringURL: String
-    var id: Int
+    var username: String
+    var email: String
+    var avatarStringURL: String
+    var description: String
+    var sex: String
+    var id: String
+    
+    var representation: [String: Any]{
+        var rep = ["username": username]
+        rep = ["email": email]
+        rep = ["avatarStringURL": avatarStringURL]
+        rep = ["description": description]
+        rep = ["sex": sex]
+        rep = ["uid": id]
+        return rep
+    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
