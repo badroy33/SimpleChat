@@ -12,6 +12,7 @@
 		97238A90261B893000A328BC /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97238A8F261B893000A328BC /* AuthViewController.swift */; };
 		97238A95261B893200A328BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97238A94261B893200A328BC /* Assets.xcassets */; };
 		97238A98261B893200A328BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97238A96261B893200A328BC /* LaunchScreen.storyboard */; };
+		97276C482657FDB1002D42E2 /* UIApplication + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */; };
 		9734D5952636E7AA006F0183 /* UIButton + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5942636E7AA006F0183 /* UIButton + Extention.swift */; };
 		9734D5982636EFB1006F0183 /* UIColor + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5972636EFB1006F0183 /* UIColor + Extention.swift */; };
 		9734D59B2636F16E006F0183 /* UIFont + Extantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D59A2636F16E006F0183 /* UIFont + Extantion.swift */; };
@@ -64,6 +65,7 @@
 		97238A94261B893200A328BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97238A97261B893200A328BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97238A99261B893200A328BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extention.swift"; sourceTree = "<group>"; };
 		9734D5942636E7AA006F0183 /* UIButton + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extention.swift"; sourceTree = "<group>"; };
 		9734D5972636EFB1006F0183 /* UIColor + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extention.swift"; sourceTree = "<group>"; };
 		9734D59A2636F16E006F0183 /* UIFont + Extantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extantion.swift"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				976F95122639AEEF004A51C1 /* UISegmentedControl + extention.swift */,
 				97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */,
 				974F7837264C463500E51723 /* UIView + Extentions.swift */,
+				97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				97238A85261B893000A328BC /* Frameworks */,
 				97238A86261B893000A328BC /* Resources */,
 				F8C0EAAADC6D7F92AC4AF269 /* [CP] Embed Pods Frameworks */,
+				557227D39198866D93B5F106 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -359,6 +363,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		557227D39198866D93B5F106 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleChat/Pods-SimpleChat-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleChat/Pods-SimpleChat-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleChat/Pods-SimpleChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D945223E27B395E083D24FB3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,6 +463,7 @@
 				9734D5A5263708A7006F0183 /* UIImageView + Extention.swift in Sources */,
 				975DB2EE26385CEE00DDBA6C /* LoginViewController.swift in Sources */,
 				9753ACD2264EC05D00187220 /* AuthService.swift in Sources */,
+				97276C482657FDB1002D42E2 /* UIApplication + Extention.swift in Sources */,
 				97238A8E261B893000A328BC /* SceneDelegate.swift in Sources */,
 				976F951C263ADBC0004A51C1 /* MainTabBarController.swift in Sources */,
 			);

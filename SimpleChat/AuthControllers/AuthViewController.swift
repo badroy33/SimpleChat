@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import GoogleSignIn
 
 class AuthViewController: UIViewController {
     
@@ -30,8 +31,11 @@ class AuthViewController: UIViewController {
         
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
         signUpVC.delegate = self
         loginVC.delegate = self
+        
+        GIDSignIn.sharedInstance()?.delegate = self
     }
     
     @objc private func emailButtonTapped(){
@@ -42,6 +46,38 @@ class AuthViewController: UIViewController {
     @objc private func loginButtonTapped(){
         print(#function)
         present(loginVC, animated: true, completion: nil)
+    }
+    
+    @objc private func googleButtonTapped(){
+        print(#function)
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+}
+
+
+
+//MARK: - GIDSignInDelegate
+
+extension AuthViewController: GIDSignInDelegate{
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        AuthService.shared.loginWithGoogle(user: user, error: error) { (result) in
+            switch result{
+            case .success(let user):
+                FirestoreService.shared.getUserData(from: user) { (result) in
+                    switch result{
+                    case .success(let muser):
+                        let mainTabBarController = MainTabBarController(currentUser: muser)
+                        mainTabBarController.modalPresentationStyle = .fullScreen
+                        UIApplication.getTopViewController()?.present(mainTabBarController, animated: true, completion: nil)
+                    case .failure(_):
+                        UIApplication.getTopViewController()?.present(SetProfileInfoViewController(currentUser: user), animated: true, completion: nil)
+                    }
+                }
+            case .failure(let error):
+                UIApplication.getTopViewController()?.showAlert(with: "Error", messege: error.localizedDescription)
+            }
+        }
     }
 }
 
