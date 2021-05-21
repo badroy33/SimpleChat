@@ -41,6 +41,18 @@ class PeopleViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Sign out", style:  .plain, target: self, action: #selector(signOut))
     }
     
+    private let currentUser: UserModel
+    
+    init(currentUser: UserModel){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+        title = currentUser.username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @objc func signOut(){
         let ac = UIAlertController(title: "", message: "Do you wan't to sign out?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

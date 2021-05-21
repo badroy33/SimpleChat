@@ -9,6 +9,22 @@ import UIKit
 
 class MainTabBarController: UITabBarController{
     
+    private let currentUser: UserModel
+    
+    init(currentUser: UserModel = UserModel(username: "Maksym Levytskyi",
+                                            email: "hello alo",
+                                            avatarStringURL: "helloalo",
+                                            description: "heloalo",
+                                            sex: "helo alo",
+                                            id: "helo alo")) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +37,8 @@ class MainTabBarController: UITabBarController{
         let conversationImage = UIImage(systemName: "bubble.left.and.bubble.right.fill", withConfiguration: boldConfig)!
         
         viewControllers = [
-            getANavigationController(viewController: PeopleViewController(), title: "Contacts", image: peopleImage),
-            getANavigationController(viewController: ListViewController(), title: "Conversation", image: conversationImage)
+            getANavigationController(viewController: PeopleViewController(currentUser: currentUser), title: "Contacts", image: peopleImage),
+            getANavigationController(viewController: ListViewController(currentUser: currentUser), title: "Conversation", image: conversationImage)
         ]
     }
     

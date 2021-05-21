@@ -50,8 +50,10 @@ class LoginViewController: UIViewController {
 //                self.showAlert(with: "Succes", messege: "Your has been loged in")
                 FirestoreService.shared.getUserData(from: user) { (result) in
                     switch result{
-                    case .success(_):
-                        self.present(MainTabBarController(), animated: true, completion: nil)
+                    case .success(let muser):
+                        let mainTabBarController = MainTabBarController(currentUser: muser)
+                        mainTabBarController.modalPresentationStyle = .fullScreen
+                        self.present(mainTabBarController, animated: true, completion: nil)
                     case .failure(_):
                         self.present(SetProfileInfoViewController(currentUser: user), animated: true, completion: nil)
                     }

@@ -53,8 +53,10 @@ class SetProfileInfoViewController: UIViewController {
                                                 sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
             switch result{
             case .success(let muser):
-                self.showAlert(with: "Succes", messege: "Your has been loged in")
-//                self.present(MainTabBarController(), animated: true, completion: nil)
+//                self.showAlert(with: "Succes", messege: "Your has been loged in")
+                let mainTabBarController = MainTabBarController(currentUser: muser)
+                mainTabBarController.modalPresentationStyle = .fullScreen
+                self.present(mainTabBarController, animated: true, completion: nil)
             case .failure(let error):
                 self.showAlert(with: "Error", messege: error.localizedDescription)
             }

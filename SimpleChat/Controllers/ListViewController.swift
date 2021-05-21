@@ -39,6 +39,18 @@ class ListViewController: UIViewController {
         reloadData()
     }
     
+    private let currentUser: UserModel
+    
+    init(currentUser: UserModel){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+        title = currentUser.username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setUpCollectionView(){
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: self.getCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleHeight]
