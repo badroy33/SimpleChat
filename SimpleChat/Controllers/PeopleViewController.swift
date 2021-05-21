@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PeopleViewController: UIViewController {
 
     
-    let users = Bundle.main.decode([UserModel].self, from: "users.json")
+//    let users = Bundle.main.decode([UserModel].self, from: "users.json")
+    let users = [UserModel]()
     var collectionView: UICollectionView!
     var diffableDataSource: UICollectionViewDiffableDataSource<Section, UserModel>!
     
@@ -35,6 +37,25 @@ class PeopleViewController: UIViewController {
         users.forEach { (user) in
             print(user.username)
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Sign out", style:  .plain, target: self, action: #selector(signOut))
+    }
+    
+    @objc func signOut(){
+        let ac = UIAlertController(title: "", message: "Do you wan't to sign out?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let signOutAction = UIAlertAction(title: "Sign out", style: .destructive) { (_) in
+            do{
+                try Auth.auth().signOut()
+                UIApplication.shared.keyWindow?.rootViewController = AuthViewController()
+            }catch{
+                print("Error \(error.localizedDescription)")
+            }
+        }
+        ac.addAction(cancelAction)
+        ac.addAction(signOutAction)
+        
+        present(ac, animated: true, completion: nil)
     }
 
     private func setUpCollectionView(){

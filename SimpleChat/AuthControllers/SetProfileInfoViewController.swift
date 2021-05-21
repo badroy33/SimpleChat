@@ -50,11 +50,11 @@ class SetProfileInfoViewController: UIViewController {
                                                 username: fullNameTextField.text,
                                                 avatarImageString: "Nil",
                                                 description: aboutMeTextField.text,
-                                                sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)!) { (result) in
+                                                sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
             switch result{
             case .success(let muser):
                 self.showAlert(with: "Succes", messege: "Your has been loged in")
-                print(muser)
+//                self.present(MainTabBarController(), animated: true, completion: nil)
             case .failure(let error):
                 self.showAlert(with: "Error", messege: error.localizedDescription)
             }
