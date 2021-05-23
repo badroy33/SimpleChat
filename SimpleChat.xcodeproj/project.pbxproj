@@ -13,6 +13,8 @@
 		97238A95261B893200A328BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97238A94261B893200A328BC /* Assets.xcassets */; };
 		97238A98261B893200A328BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97238A96261B893200A328BC /* LaunchScreen.storyboard */; };
 		97276C482657FDB1002D42E2 /* UIApplication + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */; };
+		97276C6426581CC4002D42E2 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C6326581CC4002D42E2 /* StorageService.swift */; };
+		97276C67265821DB002D42E2 /* UIImage + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C66265821DB002D42E2 /* UIImage + Extention.swift */; };
 		9734D5952636E7AA006F0183 /* UIButton + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5942636E7AA006F0183 /* UIButton + Extention.swift */; };
 		9734D5982636EFB1006F0183 /* UIColor + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5972636EFB1006F0183 /* UIColor + Extention.swift */; };
 		9734D59B2636F16E006F0183 /* UIFont + Extantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D59A2636F16E006F0183 /* UIFont + Extantion.swift */; };
@@ -66,6 +68,8 @@
 		97238A97261B893200A328BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97238A99261B893200A328BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extention.swift"; sourceTree = "<group>"; };
+		97276C6326581CC4002D42E2 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		97276C66265821DB002D42E2 /* UIImage + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extention.swift"; sourceTree = "<group>"; };
 		9734D5942636E7AA006F0183 /* UIButton + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extention.swift"; sourceTree = "<group>"; };
 		9734D5972636EFB1006F0183 /* UIColor + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extention.swift"; sourceTree = "<group>"; };
 		9734D59A2636F16E006F0183 /* UIFont + Extantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extantion.swift"; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				97EA305F2645DEAF006C9CDC /* Models */,
 				9753ACD1264EC05D00187220 /* AuthService.swift */,
 				97ED6666265584D700A42844 /* FirestoreService.swift */,
+				97276C6326581CC4002D42E2 /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */,
 				974F7837264C463500E51723 /* UIView + Extentions.swift */,
 				97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */,
+				97276C66265821DB002D42E2 /* UIImage + Extention.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				97238A8C261B893000A328BC /* AppDelegate.swift in Sources */,
 				974F783B264D4E9300E51723 /* СhatRequestViewController.swift in Sources */,
 				97A5BB242642E75E0024680E /* SelfCellConfiguration.swift in Sources */,
+				97276C6426581CC4002D42E2 /* StorageService.swift in Sources */,
 				97BFE03E263759AD0058E407 /* UIStackView + Extention.swift in Sources */,
 				97EA308526472BF3006C9CDC /* UserCell.swift in Sources */,
 				976F9508263983ED004A51C1 /* SetProfileInfoViewController.swift in Sources */,
@@ -463,6 +470,7 @@
 				9734D5A5263708A7006F0183 /* UIImageView + Extention.swift in Sources */,
 				975DB2EE26385CEE00DDBA6C /* LoginViewController.swift in Sources */,
 				9753ACD2264EC05D00187220 /* AuthService.swift in Sources */,
+				97276C67265821DB002D42E2 /* UIImage + Extention.swift in Sources */,
 				97276C482657FDB1002D42E2 /* UIApplication + Extention.swift in Sources */,
 				97238A8E261B893000A328BC /* SceneDelegate.swift in Sources */,
 				976F951C263ADBC0004A51C1 /* MainTabBarController.swift in Sources */,

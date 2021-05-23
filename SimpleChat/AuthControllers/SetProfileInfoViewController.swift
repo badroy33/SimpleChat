@@ -46,27 +46,42 @@ class SetProfileInfoViewController: UIViewController {
         view.backgroundColor = .white
         setUpConstraints()
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+        addPhotoView.plusButton.addTarget(self, action: #selector(plusButtontapped), for: .touchUpInside)
     }
-    
+
+}
+
+//MARK: - Actions
+
+extension SetProfileInfoViewController{
     @objc func continueButtonTapped(){
+        print(#function)
         FirestoreService.shared.saveProfileWith(id: currentUser.uid,
                                                 email: currentUser.email!,
                                                 username: fullNameTextField.text,
-                                                avatarImageString: "Nil",
+                                                avatarImage: addPhotoView.avatarImage.image,
                                                 description: aboutMeTextField.text,
                                                 sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
             switch result{
             case .success(let muser):
+                print("suc max")
 //                self.showAlert(with: "Succes", messege: "Your has been loged in")
                 let mainTabBarController = MainTabBarController(currentUser: muser)
                 mainTabBarController.modalPresentationStyle = .fullScreen
                 self.present(mainTabBarController, animated: true, completion: nil)
             case .failure(let error):
                 self.showAlert(with: "Error", messege: error.localizedDescription)
+                print("fail max")
             }
         }
     }
-
+    
+    @objc func plusButtontapped(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
 }
 
 
@@ -104,6 +119,20 @@ extension SetProfileInfoViewController{
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
+}
+
+
+//MARK: - UINavigationControllerDelegate, UIImagePickerControllerDelegate
+
+
+extension SetProfileInfoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        addPhotoView.avatarImage.image = image
+    }
+    
 }
 
 // MARK: - SwiftUI

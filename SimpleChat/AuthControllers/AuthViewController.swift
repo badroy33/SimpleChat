@@ -60,6 +60,7 @@ class AuthViewController: UIViewController {
 //MARK: - GIDSignInDelegate
 
 extension AuthViewController: GIDSignInDelegate{
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         AuthService.shared.loginWithGoogle(user: user, error: error) { (result) in
             switch result{
