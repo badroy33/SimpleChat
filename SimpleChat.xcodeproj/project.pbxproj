@@ -43,10 +43,10 @@
 		97A5BB2A2642FFA20024680E /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A5BB292642FFA20024680E /* SectionHeader.swift */; };
 		97BFE03A26374E7F0058E407 /* ButtonsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03926374E7F0058E407 /* ButtonsViews.swift */; };
 		97BFE03E263759AD0058E407 /* UIStackView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */; };
+		97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C547265AB4F300628F45 /* ListenerService.swift */; };
 		97EA305A2645DE9F006C9CDC /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA30592645DE9F006C9CDC /* ChatModel.swift */; };
 		97EA305D2645DEAA006C9CDC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA305C2645DEAA006C9CDC /* UserModel.swift */; };
 		97EA30802645E4C3006C9CDC /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 97EA307D2645E4C3006C9CDC /* waitingChats.json */; };
-		97EA30812645E4C3006C9CDC /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 97EA307E2645E4C3006C9CDC /* users.json */; };
 		97EA30822645E4C3006C9CDC /* currentChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 97EA307F2645E4C3006C9CDC /* currentChats.json */; };
 		97EA308526472BF3006C9CDC /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA308426472BF3006C9CDC /* UserCell.swift */; };
 		97EA308926472EBA006C9CDC /* UIViewController + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA308826472EBA006C9CDC /* UIViewController + Extention.swift */; };
@@ -98,10 +98,10 @@
 		97A5BB292642FFA20024680E /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		97BFE03926374E7F0058E407 /* ButtonsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViews.swift; sourceTree = "<group>"; };
 		97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extention.swift"; sourceTree = "<group>"; };
+		97E7C547265AB4F300628F45 /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		97EA30592645DE9F006C9CDC /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		97EA305C2645DEAA006C9CDC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		97EA307D2645E4C3006C9CDC /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = waitingChats.json; path = "../../../../Downloads/[SwiftBook] Программирование на Swift/28. Курс По Мессенджеру IChat/20. App Users Screen/20. урок 3/IChat/waitingChats.json"; sourceTree = "<group>"; };
-		97EA307E2645E4C3006C9CDC /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = users.json; path = "../../../../Downloads/[SwiftBook] Программирование на Swift/28. Курс По Мессенджеру IChat/20. App Users Screen/20. урок 3/IChat/users.json"; sourceTree = "<group>"; };
 		97EA307F2645E4C3006C9CDC /* currentChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = currentChats.json; path = "../../../../Downloads/[SwiftBook] Программирование на Swift/28. Курс По Мессенджеру IChat/20. App Users Screen/20. урок 3/IChat/currentChats.json"; sourceTree = "<group>"; };
 		97EA308426472BF3006C9CDC /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		97EA308826472EBA006C9CDC /* UIViewController + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extention.swift"; sourceTree = "<group>"; };
@@ -166,7 +166,6 @@
 				97BFE035263747D30058E407 /* Extentions */,
 				97ED66692655852900A42844 /* Helpers */,
 				97EA307F2645E4C3006C9CDC /* currentChats.json */,
-				97EA307E2645E4C3006C9CDC /* users.json */,
 				97EA307D2645E4C3006C9CDC /* waitingChats.json */,
 				97238A94261B893200A328BC /* Assets.xcassets */,
 				97238A96261B893200A328BC /* LaunchScreen.storyboard */,
@@ -183,6 +182,7 @@
 				9753ACD1264EC05D00187220 /* AuthService.swift */,
 				97ED6666265584D700A42844 /* FirestoreService.swift */,
 				97276C6326581CC4002D42E2 /* StorageService.swift */,
+				97E7C547265AB4F300628F45 /* ListenerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -357,7 +357,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97EA30812645E4C3006C9CDC /* users.json in Resources */,
 				97EA30802645E4C3006C9CDC /* waitingChats.json in Resources */,
 				97238A98261B893200A328BC /* LaunchScreen.storyboard in Resources */,
 				97EA30822645E4C3006C9CDC /* currentChats.json in Resources */,
@@ -453,6 +452,7 @@
 				976F9526263AFACF004A51C1 /* ListViewController.swift in Sources */,
 				979796DC263DABCC00CD0792 /* BundleDecodable.swift in Sources */,
 				97BFE03A26374E7F0058E407 /* ButtonsViews.swift in Sources */,
+				97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */,
 				976F950B26398B2B004A51C1 /* AddPhotoView.swift in Sources */,
 				97EA305D2645DEAA006C9CDC /* UserModel.swift in Sources */,
 				97ED668126558C7C00A42844 /* UserError.swift in Sources */,

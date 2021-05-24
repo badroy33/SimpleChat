@@ -25,8 +25,26 @@ struct UserModel: Hashable, Decodable {
         self.sex = sex
         self.id = id
     }
+    
     init?(documentSnapchot: DocumentSnapshot){
         guard let data = documentSnapchot.data() else { return nil }
+        guard let username = data["username"] as? String,
+              let email = data["email"] as? String,
+              let avatarStringURL = data["avatarStringURL"] as? String,
+              let description = data["description"] as? String,
+              let sex = data["sex"] as? String,
+              let id = data["uid"] as? String else { return nil }
+        
+        self.username = username
+        self.email = email
+        self.avatarStringURL = avatarStringURL
+        self.description = description
+        self.sex = sex
+        self.id = id
+    }
+    
+    init?(queryDocumentSnapchot: QueryDocumentSnapshot){
+        let data = queryDocumentSnapchot.data()
         guard let username = data["username"] as? String,
               let email = data["email"] as? String,
               let avatarStringURL = data["avatarStringURL"] as? String,
