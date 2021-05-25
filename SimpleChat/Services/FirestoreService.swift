@@ -15,6 +15,7 @@ class FirestoreService{
         return db.collection("users")
     }
     
+    private var currentUser: UserModel!
     
     func getUserData(from user: User, completion: @escaping (Result<UserModel, Error>) -> Void ){
         let docRef = userRef.document(user.uid)
@@ -24,6 +25,7 @@ class FirestoreService{
                     completion(.failure(UserError.notEnoughData))
                     return
                 }
+                self.currentUser = muser
                 completion(.success(muser))
             }else{
                 completion(.failure(UserError.unableToGetUser))
@@ -39,12 +41,10 @@ class FirestoreService{
             return
         }
         
-        
         guard avatarImage != #imageLiteral(resourceName: "avatar") else {
             completion(.failure(UserError.photoNotExist))
             return
         }
-        
         
         var muser = UserModel(username: username!,
                               email: email,
@@ -74,5 +74,31 @@ class FirestoreService{
             }
         }//StorageService
     }//saveProfileWith
+    
+    func createWaitingChat(message: String, reciver: UserModel, completion: @escaping (Result<Void, Error>) -> Void){
+        let reference = db.collection(["users", reciver.id, "waitingChats"].joined(separator: "/"))
+        let messageRef = reference.document(self.currentUser.id).collection("messages")
+        
+        let message = MessageModel(user: self.currentUser, content: message)
+        
+        let chat = ChatModel(friendUsername: currentUser.username,
+                             friendImageStringURL: currentUser.avatarStringURL,
+                             lastMessageContent: message.content,
+                             friendID: currentUser.id)
+    
+        reference.document(currentUser.id).setData(chat.representation) { (error) in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            messageRef.addDocument(data: message.representation) { (error) in
+                if let error = error{
+                    completion(.failure(error))
+                    return
+                }
+            }
+            completion(.success(Void()))
+        }
+    }
     
 }

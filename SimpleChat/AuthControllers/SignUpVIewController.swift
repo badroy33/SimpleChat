@@ -51,10 +51,10 @@ class SignUpVIewController: UIViewController{
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { (result) in
             switch result{
             case .success(let muser):
-//                self.showAlert(with: "Succes", messege: "Your profile has been create.")
+//                self.showAlert(with: "Succes", message: "Your profile has been create.")
                 self.present(SetProfileInfoViewController(currentUser: muser), animated: true, completion: nil)
             case .failure(let error):
-                self.showAlert(with: "Error", messege: error.localizedDescription)
+                self.showAlert(with: "Error", message: error.localizedDescription)
             }
         }
         print(#function)

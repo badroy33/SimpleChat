@@ -6,14 +6,30 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileViewController: UIViewController {
     
     let containerView = UIView()
-    let profileImageView = UIImageView(image: #imageLiteral(resourceName: "human3"), contentMode: .scaleAspectFill)
-    let nameLabel = UILabel(text: "Rob Shnider", font: .systemFont(ofSize: 20, weight: .light),textColor: .black)
-    let aboutMeLabel = UILabel(text: "I'm the real man. Germans hi hitler see you in hell.", font: .systemFont(ofSize: 18, weight: .light), textColor: UIColor.buttonDarkTextColor())
+    var profileImageView = UIImageView(image: #imageLiteral(resourceName: "human3"), contentMode: .scaleAspectFill)
+    var nameLabel = UILabel(text: "Rob Shnider", font: .systemFont(ofSize: 20, weight: .light),textColor: .black)
+    var aboutMeLabel = UILabel(text: "I'm the real man. Germans hi hitler see you in hell.", font: .systemFont(ofSize: 18, weight: .light), textColor: UIColor.buttonDarkTextColor())
     let textField = InsertableTextField()
+    
+    private let user: UserModel
+    
+    init(user: UserModel = UserModel(username: "abs", email: "asd", avatarStringURL: "asd", description: "asd", sex: "asd", id: "asd")) {
+        self.user = user
+        self.profileImageView.sd_setImage(with: URL(string: user.avatarStringURL), completed: nil)
+        self.nameLabel.text = user.username
+        self.aboutMeLabel.text = user.description
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,12 +90,23 @@ extension ProfileViewController{
         aboutMeLabel.numberOfLines = 0
         
         if let button = textField.rightView as? UIButton{
-            button.addTarget(self, action: #selector(sendMessege), for: .touchUpInside)
+            button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         }
     }
     
-    @objc private func sendMessege(){
+    @objc private func sendMessage(){
         print(#function)
+        guard let message = textField.text, message != "" else { return }
+        self.dismiss(animated: true) {
+            FirestoreService.shared.createWaitingChat(message: message, reciver: self.user) { (result) in
+                switch result{
+                case .success():
+                    UIApplication.getTopViewController()?.showAlert(with: "Succes", message: "Your message and chat request for \(self.user.username) has been sended")
+                case .failure(let error):
+                    UIApplication.getTopViewController()?.showAlert(with: "Error", message: error.localizedDescription)
+                }
+            }
+        }
     }
 }
 

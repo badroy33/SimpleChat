@@ -27,8 +27,8 @@ class ListViewController: UIViewController {
     
     var diffableDataSource: UICollectionViewDiffableDataSource<Section, ChatModel>?
     
-    let currentChats = Bundle.main.decode([ChatModel].self, from: "currentChats.json")
-    let waitingChats = Bundle.main.decode([ChatModel].self, from: "waitingChats.json")
+    let currentChats = [ChatModel]()
+    let waitingChats = [ChatModel]()
     
     
     override func viewDidLoad() {

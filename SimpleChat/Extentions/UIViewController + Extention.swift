@@ -19,8 +19,8 @@ extension UIViewController{
 
 
 extension UIViewController{
-    func showAlert(with title: String, messege: String){
-        let aletrController = UIAlertController(title: title, message: messege, preferredStyle: .alert)
+    func showAlert(with title: String, message: String){
+        let aletrController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         
         aletrController.addAction(okAction)

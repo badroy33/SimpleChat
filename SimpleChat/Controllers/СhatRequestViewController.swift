@@ -12,7 +12,7 @@ class ChatRequestViewController: UIViewController {
     let containerView = UIView()
     let profileImageView = UIImageView(image: #imageLiteral(resourceName: "human4"), contentMode: .scaleAspectFill)
     let nameLabel = UILabel(text: "Rob Shnider", font: .systemFont(ofSize: 20, weight: .light),textColor: .black)
-    let acceptMessegeLabel = UILabel(text: "You can accept a new conversation.", font: .systemFont(ofSize: 18, weight: .light), textColor: UIColor.buttonDarkTextColor())
+    let acceptMessageLabel = UILabel(text: "You can accept a new conversation.", font: .systemFont(ofSize: 18, weight: .light), textColor: UIColor.buttonDarkTextColor())
     let acceptButton = UIButton(title: "Accept", titleColor: .white, font: .laoSangamMN20(), backgroundColor: .red, cornerRadius: 10)
     let denyButton = UIButton(title: "Deny", titleColor: #colorLiteral(red: 0.8352941176, green: 0.2, blue: 0.2, alpha: 1), font: .laoSangamMN20(), backgroundColor: .white, cornerRadius: 10)
     
@@ -34,12 +34,12 @@ extension ChatRequestViewController{
         containerView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        acceptMessegeLabel.translatesAutoresizingMaskIntoConstraints = false
+        acceptMessageLabel.translatesAutoresizingMaskIntoConstraints = false
          
         containerView.layer.cornerRadius = 30
         containerView.backgroundColor = .mainWhiteColor()
         
-        acceptMessegeLabel.numberOfLines = 0
+        acceptMessageLabel.numberOfLines = 0
     
         denyButton.layer.borderWidth = 1.2
         denyButton.layer.borderColor = #colorLiteral(red: 0.8352941176, green: 0.2, blue: 0.2, alpha: 1)
@@ -59,7 +59,7 @@ extension ChatRequestViewController{
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = UIStackView.Distribution.fillEqually
         containerView.addSubview(nameLabel)
-        containerView.addSubview(acceptMessegeLabel)
+        containerView.addSubview(acceptMessageLabel)
         containerView.addSubview(stackView)
         
 
@@ -84,11 +84,11 @@ extension ChatRequestViewController{
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -25),
             
-            acceptMessegeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            acceptMessegeLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 25),
-            acceptMessegeLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -25),
+            acceptMessageLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+            acceptMessageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 25),
+            acceptMessageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -25),
 
-            stackView.topAnchor.constraint(equalTo: acceptMessegeLabel.bottomAnchor, constant: 15),
+            stackView.topAnchor.constraint(equalTo: acceptMessageLabel.bottomAnchor, constant: 15),
             stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -25),
             stackView.heightAnchor.constraint(equalToConstant: 60)

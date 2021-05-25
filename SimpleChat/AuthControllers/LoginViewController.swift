@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { (result) in
             switch result{
             case .success(let user):
-//                self.showAlert(with: "Succes", messege: "Your has been loged in")
+//                self.showAlert(with: "Succes", message: "Your has been loged in")
                 FirestoreService.shared.getUserData(from: user) { (result) in
                     switch result{
                     case .success(let muser):
@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
                     }
                 }
             case .failure(let error):
-                self.showAlert(with: "Error", messege: error.localizedDescription)
+                self.showAlert(with: "Error", message: error.localizedDescription)
             }
         }
         print(#function)

@@ -44,6 +44,7 @@
 		97BFE03A26374E7F0058E407 /* ButtonsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03926374E7F0058E407 /* ButtonsViews.swift */; };
 		97BFE03E263759AD0058E407 /* UIStackView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */; };
 		97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C547265AB4F300628F45 /* ListenerService.swift */; };
+		97E7C588265BE88000628F45 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C587265BE88000628F45 /* MessageModel.swift */; };
 		97EA305A2645DE9F006C9CDC /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA30592645DE9F006C9CDC /* ChatModel.swift */; };
 		97EA305D2645DEAA006C9CDC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA305C2645DEAA006C9CDC /* UserModel.swift */; };
 		97EA30802645E4C3006C9CDC /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 97EA307D2645E4C3006C9CDC /* waitingChats.json */; };
@@ -99,6 +100,7 @@
 		97BFE03926374E7F0058E407 /* ButtonsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViews.swift; sourceTree = "<group>"; };
 		97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extention.swift"; sourceTree = "<group>"; };
 		97E7C547265AB4F300628F45 /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
+		97E7C587265BE88000628F45 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		97EA30592645DE9F006C9CDC /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		97EA305C2645DEAA006C9CDC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		97EA307D2645E4C3006C9CDC /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = waitingChats.json; path = "../../../../Downloads/[SwiftBook] Программирование на Swift/28. Курс По Мессенджеру IChat/20. App Users Screen/20. урок 3/IChat/waitingChats.json"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				97EA30592645DE9F006C9CDC /* ChatModel.swift */,
 				97EA305C2645DEAA006C9CDC /* UserModel.swift */,
+				97E7C587265BE88000628F45 /* MessageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				97EA305A2645DE9F006C9CDC /* ChatModel.swift in Sources */,
 				974F782F264ACFB000E51723 /* ProfileViewController.swift in Sources */,
 				976F9526263AFACF004A51C1 /* ListViewController.swift in Sources */,
+				97E7C588265BE88000628F45 /* MessageModel.swift in Sources */,
 				979796DC263DABCC00CD0792 /* BundleDecodable.swift in Sources */,
 				97BFE03A26374E7F0058E407 /* ButtonsViews.swift in Sources */,
 				97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */,

@@ -18,6 +18,8 @@ class PeopleViewController: UIViewController {
     var collectionView: UICollectionView!
     var diffableDataSource: UICollectionViewDiffableDataSource<Section, UserModel>!
     
+    private let currentUser: UserModel
+    
     enum Section: Int, CaseIterable{
         case users
         func description(usersCount: Int) -> String{
@@ -28,6 +30,21 @@ class PeopleViewController: UIViewController {
         }
     }
     
+    
+    init(currentUser: UserModel){
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+        title = currentUser.username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        usersListener?.remove()
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,28 +63,11 @@ class PeopleViewController: UIViewController {
                 self.users = users
                 self.reloadData(with: nil)
             case .failure(let error):
-                self.showAlert(with: "Error", messege: error.localizedDescription)
+                self.showAlert(with: "Error", message: error.localizedDescription)
             }
         })
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Sign out", style:  .plain, target: self, action: #selector(signOut))
-    }
-    
-    private let currentUser: UserModel
-    
-    init(currentUser: UserModel){
-        self.currentUser = currentUser
-        super.init(nibName: nil, bundle: nil)
-        title = currentUser.username
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    deinit {
-        usersListener?.remove()
     }
     
     @objc func signOut(){
@@ -96,6 +96,8 @@ class PeopleViewController: UIViewController {
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
+        
+        collectionView.delegate = self
     }
     
     
@@ -122,6 +124,18 @@ class PeopleViewController: UIViewController {
         diffableDataSource?.apply(snapShot, animatingDifferences: true)
     }
 }
+
+
+//MARK: - UICollectionViewDelegate
+
+extension PeopleViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = self.diffableDataSource.itemIdentifier(for: indexPath) else { return }
+        let profileVC = ProfileViewController(user: user)
+        present(profileVC, animated: true, completion: nil)
+    }
+}
+
 
 //MARK: - DataSource
 

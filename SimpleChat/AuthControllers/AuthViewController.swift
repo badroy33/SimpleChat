@@ -76,7 +76,7 @@ extension AuthViewController: GIDSignInDelegate{
                     }
                 }
             case .failure(let error):
-                UIApplication.getTopViewController()?.showAlert(with: "Error", messege: error.localizedDescription)
+                UIApplication.getTopViewController()?.showAlert(with: "Error", message: error.localizedDescription)
             }
         }
     }
