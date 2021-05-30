@@ -63,3 +63,12 @@ struct MessageModel: Hashable, MessageType {
         return lhs.messageId == rhs.messageId
     }
 }
+
+
+extension MessageModel: Comparable{
+    static func < (lhs: MessageModel, rhs: MessageModel) -> Bool {
+        return lhs.sentDate < rhs.sentDate 
+    }
+    
+    
+}
