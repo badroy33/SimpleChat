@@ -19,7 +19,13 @@ class FirestoreService{
         return db.collection(["users", currentUser.id, "waitingChats"].joined(separator: "/"))
     }
     
+    private var currentChatsRef: CollectionReference{
+        return db.collection(["users", currentUser.id, "currentChats"].joined(separator: "/"))
+    }
+    
     private var currentUser: UserModel!
+    
+    
     
     func getUserData(from user: User, completion: @escaping (Result<UserModel, Error>) -> Void ){
         let docRef = userRef.document(user.uid)
@@ -153,6 +159,53 @@ class FirestoreService{
                 messages.append(message)
             }
             completion(.success(messages))
+        }
+    }
+    
+    
+    func changeToCurrentChat(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void){
+        self.getWaitingChatMessages(chat: chat) { (result) in
+            switch result{
+            case .success(let messages):
+                self.deleteWaitingChat(chat: chat) { (result) in
+                    switch result{
+                    case .success():
+                        self.createCurrentChat(chat: chat, messages: messages) { (result) in
+                            switch result{
+                            case .success():
+                                completion(.success(Void()))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                        }
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    func createCurrentChat(chat: ChatModel, messages: [MessageModel],  completion: @escaping (Result<Void, Error>) -> Void){
+        let messagesRef = currentChatsRef.document(chat.friendID).collection("messages")
+        currentChatsRef.document(chat.friendID).setData(chat.representation) { (error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            for message in messages{
+                messagesRef.addDocument(data: message.representation) { (error) in
+                    if let error = error {
+                        completion(.failure(error))
+                        return
+                    }
+                    completion(.success(Void()))
+                }
+            }
         }
     }
     

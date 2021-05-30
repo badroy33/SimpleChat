@@ -10,6 +10,6 @@ import UIKit
 protocol WaitingChatsNavigation: class{
     func removeWaitingChat(chat: ChatModel)
     
-    func changeToActive(chat: ChatModel)
+    func changeToCurrent(chat: ChatModel)
     
 }

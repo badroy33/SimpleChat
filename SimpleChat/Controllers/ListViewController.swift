@@ -12,7 +12,9 @@ class ListViewController: UIViewController {
     
     var collectionView: UICollectionView!
     
-    var waitingChatsListener: ListenerRegistration?
+    private var waitingChatsListener: ListenerRegistration?
+    
+    private var currentChatsListener: ListenerRegistration?
     
     enum Section: Int, CaseIterable{
         case waitingChats, currentChats
@@ -29,7 +31,7 @@ class ListViewController: UIViewController {
     
     var diffableDataSource: UICollectionViewDiffableDataSource<Section, ChatModel>?
     
-    let currentChats = [ChatModel]()
+    var currentChats = [ChatModel]()
     var waitingChats = [ChatModel]()
     
     private let currentUser: UserModel
@@ -51,6 +53,16 @@ class ListViewController: UIViewController {
                     self.present(chatRequestVC, animated: true, completion: nil)
                 }
                 self.waitingChats = waitingChats
+                self.reloadData()
+            case .failure(let error):
+                self.showAlert(with: "Error", message: error.localizedDescription)
+            }
+        })
+        
+        self.currentChatsListener = ListenerService.shared.currentChatsObserve(chats: currentChats, completion: { (result) in
+            switch result{
+            case .success(let currentChats):
+                self.currentChats = currentChats
                 self.reloadData()
             case .failure(let error):
                 self.showAlert(with: "Error", message: error.localizedDescription)
@@ -245,8 +257,15 @@ extension ListViewController: WaitingChatsNavigation{
         }
     }
     
-    func changeToActive(chat: ChatModel) {
-        print(#function)
+    func changeToCurrent(chat: ChatModel) {
+        FirestoreService.shared.changeToCurrentChat(chat: chat) { (result) in
+            switch result{
+            case .success():
+                self.showAlert(with: "Succes", message: "You have accepted a chat request from \(chat.friendUsername)")
+            case .failure(let error):
+                self.showAlert(with: "Error", message: error.localizedDescription)
+            }
+        }
     }
 }
 

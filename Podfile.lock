@@ -341,7 +341,12 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.5.0)
+  - InputBarAccessoryView (5.3.1):
+    - InputBarAccessoryView/Core (= 5.3.1)
+  - InputBarAccessoryView/Core (5.3.1)
   - leveldb-library (1.22)
+  - MessageKit (3.6.1):
+    - InputBarAccessoryView (~> 5.3.1)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -358,6 +363,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - GoogleSignIn
+  - MessageKit
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
@@ -381,7 +387,9 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - InputBarAccessoryView
     - leveldb-library
+    - MessageKit
     - nanopb
     - PromisesObjC
     - SDWebImage
@@ -406,11 +414,13 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  InputBarAccessoryView: 1f75d8c9f75e5e57f3ffac36ed58635a8005e0bc
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MessageKit: d153fbbbcb12f3f4045a1ba8874298924dacfb62
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: e8c9df1ad7bd6f8dad49cf07943597e66b754ff7
+PODFILE CHECKSUM: 194f520a468818bd591b369cb257d4598ade6f75
 
 COCOAPODS: 1.10.1
