@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ListViewController: UIViewController {
     
-    
     var collectionView: UICollectionView!
+    
+    var waitingChatsListener: ListenerRegistration?
     
     enum Section: Int, CaseIterable{
         case waitingChats, currentChats
@@ -28,7 +30,9 @@ class ListViewController: UIViewController {
     var diffableDataSource: UICollectionViewDiffableDataSource<Section, ChatModel>?
     
     let currentChats = [ChatModel]()
-    let waitingChats = [ChatModel]()
+    var waitingChats = [ChatModel]()
+    
+    private let currentUser: UserModel
     
     
     override func viewDidLoad() {
@@ -37,9 +41,22 @@ class ListViewController: UIViewController {
         setUpSearchBar()
         createDataSource()
         reloadData()
+        
+        self.waitingChatsListener = ListenerService.shared.waitingChatsObserve(chats: waitingChats, completion: { (result) in
+            switch result{
+            case .success(let waitingChats):
+                if self.waitingChats != [], self.waitingChats.count <= waitingChats.count{
+                    let chatRequestVC = ChatRequestViewController(chat: waitingChats.last!)
+                    chatRequestVC.delegate = self
+                    self.present(chatRequestVC, animated: true, completion: nil)
+                }
+                self.waitingChats = waitingChats
+                self.reloadData()
+            case .failure(let error):
+                self.showAlert(with: "Error", message: error.localizedDescription)
+            }
+        })
     }
-    
-    private let currentUser: UserModel
     
     init(currentUser: UserModel){
         self.currentUser = currentUser
@@ -49,6 +66,10 @@ class ListViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        waitingChatsListener?.remove()
     }
     
     private func setUpCollectionView(){
@@ -61,6 +82,8 @@ class ListViewController: UIViewController {
         collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
+        
+        collectionView.delegate = self
     }
     
     private func setUpSearchBar(){
@@ -185,6 +208,45 @@ extension ListViewController{
         let sectionSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return sectionHeader
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension ListViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let chat = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
+        guard let section = Section(rawValue: indexPath.section) else { return }
+        
+        switch section{
+        case .waitingChats:
+            let chatRequestVC = ChatRequestViewController(chat: chat)
+            chatRequestVC.delegate = self
+            present(chatRequestVC, animated: true, completion: nil)
+        case .currentChats:
+            //TODO: currentchats todo
+            print(indexPath)
+        }
+    }
+}
+
+
+// MARK: - WaitingChatsNavigation
+
+extension ListViewController: WaitingChatsNavigation{
+    func removeWaitingChat(chat: ChatModel) {
+        FirestoreService.shared.deleteWaitingChat(chat: chat) { (result) in
+            switch result{
+            case .success():
+                self.showAlert(with: "Succes", message: "Yout chat with a \(chat.friendUsername) has been deleted")
+            case .failure(let error):
+                self.showAlert(with: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func changeToActive(chat: ChatModel) {
+        print(#function)
     }
 }
 

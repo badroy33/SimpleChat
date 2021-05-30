@@ -45,6 +45,7 @@
 		97BFE03E263759AD0058E407 /* UIStackView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */; };
 		97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C547265AB4F300628F45 /* ListenerService.swift */; };
 		97E7C588265BE88000628F45 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C587265BE88000628F45 /* MessageModel.swift */; };
+		97E7C58B265E97D400628F45 /* WaitingChatsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C58A265E97D400628F45 /* WaitingChatsNavigation.swift */; };
 		97EA305A2645DE9F006C9CDC /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA30592645DE9F006C9CDC /* ChatModel.swift */; };
 		97EA305D2645DEAA006C9CDC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA305C2645DEAA006C9CDC /* UserModel.swift */; };
 		97EA30802645E4C3006C9CDC /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 97EA307D2645E4C3006C9CDC /* waitingChats.json */; };
@@ -101,6 +102,7 @@
 		97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extention.swift"; sourceTree = "<group>"; };
 		97E7C547265AB4F300628F45 /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		97E7C587265BE88000628F45 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		97E7C58A265E97D400628F45 /* WaitingChatsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsNavigation.swift; sourceTree = "<group>"; };
 		97EA30592645DE9F006C9CDC /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		97EA305C2645DEAA006C9CDC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		97EA307D2645E4C3006C9CDC /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = waitingChats.json; path = "../../../../Downloads/[SwiftBook] Программирование на Swift/28. Курс По Мессенджеру IChat/20. App Users Screen/20. урок 3/IChat/waitingChats.json"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				97A5BB232642E75E0024680E /* SelfCellConfiguration.swift */,
 				97ED6663265419D700A42844 /* AuthNavigationDelegate.swift */,
+				97E7C58A265E97D400628F45 /* WaitingChatsNavigation.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				97276C67265821DB002D42E2 /* UIImage + Extention.swift in Sources */,
 				97276C482657FDB1002D42E2 /* UIApplication + Extention.swift in Sources */,
 				97238A8E261B893000A328BC /* SceneDelegate.swift in Sources */,
+				97E7C58B265E97D400628F45 /* WaitingChatsNavigation.swift in Sources */,
 				976F951C263ADBC0004A51C1 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

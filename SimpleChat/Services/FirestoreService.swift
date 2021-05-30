@@ -15,6 +15,10 @@ class FirestoreService{
         return db.collection("users")
     }
     
+    private var waitingChatsRef: CollectionReference{
+        return db.collection(["users", currentUser.id, "waitingChats"].joined(separator: "/"))
+    }
+    
     private var currentUser: UserModel!
     
     func getUserData(from user: User, completion: @escaping (Result<UserModel, Error>) -> Void ){
@@ -98,6 +102,57 @@ class FirestoreService{
                 }
             }
             completion(.success(Void()))
+        }
+    }
+    
+    func deleteWaitingChat(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void){
+        waitingChatsRef.document(chat.friendID).delete { (error) in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            self.deleteMessages(chat: chat, completion: completion)
+        }
+    }
+    
+    func deleteMessages(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void){
+        let referance = waitingChatsRef.document(chat.friendID).collection("messages")
+        
+        self.getWaitingChatMessages(chat: chat) { (result) in
+            switch result{
+            case .success(let messages):
+                for message in messages {
+                    guard let documentID = message.id else{ return }
+                    let messageRef = referance.document(documentID)
+                    messageRef.delete { (error) in
+                        if let error = error{
+                            completion(.failure(error))
+                            return
+                        }
+                        completion(.success(Void()))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+                
+            }
+        }
+    }
+    
+    func getWaitingChatMessages(chat: ChatModel, completion: @escaping (Result<[MessageModel], Error>) -> Void){
+        let referance = waitingChatsRef.document(chat.friendID).collection("messages")
+        var messages = [MessageModel]()
+        referance.getDocuments { (querySnapshot, error) in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            
+            for document in querySnapshot!.documents{
+                guard let message = MessageModel(queryDocumentSnapshot: document) else { return }
+                messages.append(message)
+            }
+            completion(.success(messages))
         }
     }
     
