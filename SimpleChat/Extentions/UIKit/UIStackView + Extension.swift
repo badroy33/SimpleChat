@@ -1,5 +1,5 @@
 //
-//  UIStackView + Extention.swift
+//  UIStackView + Extension.swift
 //  SimpleChat
 //
 //  Created by Maksym Levytskyi on 26.04.2021.

@@ -104,7 +104,7 @@ extension LoginViewController{
                                         passwordStackView,
                                         loginButton],
                                     axis: .vertical,
-                                    spacing: 40)
+                                    spacing: 20)
         
         let bottomView = UIStackView(arrangedSubviews: [
                                         needAnAccountLabel,
@@ -124,11 +124,11 @@ extension LoginViewController{
         NSLayoutConstraint.activate([
             loginButton.heightAnchor.constraint(equalToConstant: 55),
             
-            welcomeBackLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            welcomeBackLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             welcomeBackLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             
-            stackView.topAnchor.constraint(equalTo: welcomeBackLabel.bottomAnchor, constant: 100),
+            stackView.topAnchor.constraint(equalTo: welcomeBackLabel.bottomAnchor, constant: 70),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             

@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import FirebaseFirestore
 
 class ChatViewController: MessagesViewController{
     
@@ -15,6 +16,8 @@ class ChatViewController: MessagesViewController{
     private let currentChat: ChatModel
     
     private var messages: [MessageModel] = []
+    
+    private var messageListener: ListenerRegistration?
     
     init(currentUser: UserModel, currentChat: ChatModel){
         self.currentUser = currentUser
@@ -25,6 +28,10 @@ class ChatViewController: MessagesViewController{
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        messageListener?.remove()
     }
     
     override func viewDidLoad() {
@@ -38,19 +45,38 @@ class ChatViewController: MessagesViewController{
 
         }
         
-        messagesCollectionView.backgroundColor = .systemGray
+        messagesCollectionView.backgroundColor = #colorLiteral(red: 0.9098170996, green: 0.9044087529, blue: 0.9139745235, alpha: 1)
         
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        
+        messageListener = ListenerService.shared.messagesObserve(chat: currentChat, completion: { (result) in
+            switch result{
+            case .success(let message):
+                self.insertNewMessage(message: message)
+            case .failure(let error):
+                self.showAlert(with: "Error", message: error.localizedDescription)
+            }
+        })
     }
     
     private func insertNewMessage(message: MessageModel){
         guard !messages.contains(message) else { return }
         messages.append(message)
         messages.sort()
+
+        let isLatestMessage = messages.firstIndex(of: message) == messages.count - 1
+        let shouldScrollToBootom = isLatestMessage && messagesCollectionView.isAtBottom
+
         messagesCollectionView.reloadData()
+        
+        if shouldScrollToBootom{
+            DispatchQueue.main.async {
+                self.messagesCollectionView.scrollToBottom(animated: true)
+            }
+        }
     }
 }
 
@@ -75,6 +101,15 @@ extension ChatViewController: MessagesDataSource{
         return 1
     }
     
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        
+        if indexPath.item % 4 == 0{
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate),
+                                      attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10),
+                                                   NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+        }else { return nil }
+        
+    }
     
 }
 
@@ -85,6 +120,12 @@ extension ChatViewController: MessagesDataSource{
 extension ChatViewController: MessagesLayoutDelegate{
     func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
         return CGSize(width: 0, height: 8)
+    }
+    
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if (indexPath.item % 4 == 0){
+            return 30
+        }else { return 0 }
     }
 }
 
@@ -157,7 +198,14 @@ extension ChatViewController{
 extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let message = MessageModel(user: currentUser, content: text)
-        insertNewMessage(message: message)
+        FirestoreService.shared.sendMessage(chat: currentChat, message: message) { (result) in
+            switch result{
+            case .success():
+                self.messagesCollectionView.scrollToBottom(animated: true)
+            case .failure(let error):
+                self.showAlert(with: "Error", message: error.localizedDescription)
+            }
+        }
         inputBar.inputTextView.text = ""
     }
 }

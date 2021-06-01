@@ -12,18 +12,19 @@
 		97238A90261B893000A328BC /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97238A8F261B893000A328BC /* AuthViewController.swift */; };
 		97238A95261B893200A328BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97238A94261B893200A328BC /* Assets.xcassets */; };
 		97238A98261B893200A328BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97238A96261B893200A328BC /* LaunchScreen.storyboard */; };
-		97276C482657FDB1002D42E2 /* UIApplication + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */; };
+		97276C482657FDB1002D42E2 /* UIApplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C472657FDB1002D42E2 /* UIApplication + Extension.swift */; };
 		97276C6426581CC4002D42E2 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C6326581CC4002D42E2 /* StorageService.swift */; };
-		97276C67265821DB002D42E2 /* UIImage + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C66265821DB002D42E2 /* UIImage + Extention.swift */; };
-		9734D5952636E7AA006F0183 /* UIButton + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5942636E7AA006F0183 /* UIButton + Extention.swift */; };
-		9734D5982636EFB1006F0183 /* UIColor + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5972636EFB1006F0183 /* UIColor + Extention.swift */; };
-		9734D59B2636F16E006F0183 /* UIFont + Extantion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D59A2636F16E006F0183 /* UIFont + Extantion.swift */; };
-		9734D5A226370716006F0183 /* UILable + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5A126370716006F0183 /* UILable + Extention.swift */; };
-		9734D5A5263708A7006F0183 /* UIImageView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5A4263708A7006F0183 /* UIImageView + Extention.swift */; };
+		97276C67265821DB002D42E2 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97276C66265821DB002D42E2 /* UIImage + Extension.swift */; };
+		9734D5952636E7AA006F0183 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5942636E7AA006F0183 /* UIButton + Extension.swift */; };
+		9734D5982636EFB1006F0183 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5972636EFB1006F0183 /* UIColor + Extension.swift */; };
+		9734D59B2636F16E006F0183 /* UIFont + Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D59A2636F16E006F0183 /* UIFont + Extansion.swift */; };
+		9734D5A226370716006F0183 /* UILable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5A126370716006F0183 /* UILable + Extension.swift */; };
+		9734D5A5263708A7006F0183 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9734D5A4263708A7006F0183 /* UIImageView + Extension.swift */; };
 		974F6E222663F591004E2B6F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F6E212663F591004E2B6F /* ChatViewController.swift */; };
+		974F6E2526651810004E2B6F /* UIScrollView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F6E2426651810004E2B6F /* UIScrollView + Extension.swift */; };
 		974F782F264ACFB000E51723 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F782E264ACFB000E51723 /* ProfileViewController.swift */; };
 		974F7833264C374700E51723 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F7832264C374700E51723 /* InsertableTextField.swift */; };
-		974F7838264C463500E51723 /* UIView + Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F7837264C463500E51723 /* UIView + Extentions.swift */; };
+		974F7838264C463500E51723 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F7837264C463500E51723 /* UIView + Extensions.swift */; };
 		974F783B264D4E9300E51723 /* СhatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974F783A264D4E9300E51723 /* СhatRequestViewController.swift */; };
 		9753ACBE264E971C00187220 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9753ACBD264E971C00187220 /* GoogleService-Info.plist */; };
 		9753ACD2264EC05D00187220 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9753ACD1264EC05D00187220 /* AuthService.swift */; };
@@ -33,7 +34,7 @@
 		975DB2EE26385CEE00DDBA6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DB2ED26385CEE00DDBA6C /* LoginViewController.swift */; };
 		976F9508263983ED004A51C1 /* SetProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F9507263983ED004A51C1 /* SetProfileInfoViewController.swift */; };
 		976F950B26398B2B004A51C1 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F950A26398B2B004A51C1 /* AddPhotoView.swift */; };
-		976F95132639AEEF004A51C1 /* UISegmentedControl + extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F95122639AEEF004A51C1 /* UISegmentedControl + extention.swift */; };
+		976F95132639AEEF004A51C1 /* UISegmentedControl + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F95122639AEEF004A51C1 /* UISegmentedControl + Extension.swift */; };
 		976F951C263ADBC0004A51C1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F951B263ADBC0004A51C1 /* MainTabBarController.swift */; };
 		976F951F263ADFC5004A51C1 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F951E263ADFC5004A51C1 /* PeopleViewController.swift */; };
 		976F9526263AFACF004A51C1 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F9525263AFACF004A51C1 /* ListViewController.swift */; };
@@ -43,7 +44,7 @@
 		97A5BB242642E75E0024680E /* SelfCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A5BB232642E75E0024680E /* SelfCellConfiguration.swift */; };
 		97A5BB2A2642FFA20024680E /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A5BB292642FFA20024680E /* SectionHeader.swift */; };
 		97BFE03A26374E7F0058E407 /* ButtonsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03926374E7F0058E407 /* ButtonsViews.swift */; };
-		97BFE03E263759AD0058E407 /* UIStackView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */; };
+		97BFE03E263759AD0058E407 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03D263759AD0058E407 /* UIStackView + Extension.swift */; };
 		97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C547265AB4F300628F45 /* ListenerService.swift */; };
 		97E7C588265BE88000628F45 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C587265BE88000628F45 /* MessageModel.swift */; };
 		97E7C58B265E97D400628F45 /* WaitingChatsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C58A265E97D400628F45 /* WaitingChatsNavigation.swift */; };
@@ -70,18 +71,19 @@
 		97238A94261B893200A328BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97238A97261B893200A328BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97238A99261B893200A328BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extention.swift"; sourceTree = "<group>"; };
+		97276C472657FDB1002D42E2 /* UIApplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extension.swift"; sourceTree = "<group>"; };
 		97276C6326581CC4002D42E2 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		97276C66265821DB002D42E2 /* UIImage + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extention.swift"; sourceTree = "<group>"; };
-		9734D5942636E7AA006F0183 /* UIButton + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extention.swift"; sourceTree = "<group>"; };
-		9734D5972636EFB1006F0183 /* UIColor + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extention.swift"; sourceTree = "<group>"; };
-		9734D59A2636F16E006F0183 /* UIFont + Extantion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extantion.swift"; sourceTree = "<group>"; };
-		9734D5A126370716006F0183 /* UILable + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable + Extention.swift"; sourceTree = "<group>"; };
-		9734D5A4263708A7006F0183 /* UIImageView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extention.swift"; sourceTree = "<group>"; };
+		97276C66265821DB002D42E2 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		9734D5942636E7AA006F0183 /* UIButton + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extension.swift"; sourceTree = "<group>"; };
+		9734D5972636EFB1006F0183 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		9734D59A2636F16E006F0183 /* UIFont + Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extansion.swift"; sourceTree = "<group>"; };
+		9734D5A126370716006F0183 /* UILable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILable + Extension.swift"; sourceTree = "<group>"; };
+		9734D5A4263708A7006F0183 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		974F6E212663F591004E2B6F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		974F6E2426651810004E2B6F /* UIScrollView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView + Extension.swift"; sourceTree = "<group>"; };
 		974F782E264ACFB000E51723 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		974F7832264C374700E51723 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
-		974F7837264C463500E51723 /* UIView + Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extentions.swift"; sourceTree = "<group>"; };
+		974F7837264C463500E51723 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		974F783A264D4E9300E51723 /* СhatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СhatRequestViewController.swift"; sourceTree = "<group>"; };
 		9753ACBD264E971C00187220 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9753ACD1264EC05D00187220 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		975DB2ED26385CEE00DDBA6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		976F9507263983ED004A51C1 /* SetProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileInfoViewController.swift; sourceTree = "<group>"; };
 		976F950A26398B2B004A51C1 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
-		976F95122639AEEF004A51C1 /* UISegmentedControl + extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl + extention.swift"; sourceTree = "<group>"; };
+		976F95122639AEEF004A51C1 /* UISegmentedControl + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl + Extension.swift"; sourceTree = "<group>"; };
 		976F951B263ADBC0004A51C1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		976F951E263ADFC5004A51C1 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		976F9525263AFACF004A51C1 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		97A5BB232642E75E0024680E /* SelfCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfCellConfiguration.swift; sourceTree = "<group>"; };
 		97A5BB292642FFA20024680E /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		97BFE03926374E7F0058E407 /* ButtonsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViews.swift; sourceTree = "<group>"; };
-		97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extention.swift"; sourceTree = "<group>"; };
+		97BFE03D263759AD0058E407 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		97E7C547265AB4F300628F45 /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		97E7C587265BE88000628F45 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		97E7C58A265E97D400628F45 /* WaitingChatsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsNavigation.swift; sourceTree = "<group>"; };
@@ -264,16 +266,17 @@
 		97BFE036263747DD0058E407 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				9734D5972636EFB1006F0183 /* UIColor + Extention.swift */,
-				9734D59A2636F16E006F0183 /* UIFont + Extantion.swift */,
-				9734D5A4263708A7006F0183 /* UIImageView + Extention.swift */,
-				9734D5A126370716006F0183 /* UILable + Extention.swift */,
-				9734D5942636E7AA006F0183 /* UIButton + Extention.swift */,
-				976F95122639AEEF004A51C1 /* UISegmentedControl + extention.swift */,
-				97BFE03D263759AD0058E407 /* UIStackView + Extention.swift */,
-				974F7837264C463500E51723 /* UIView + Extentions.swift */,
-				97276C472657FDB1002D42E2 /* UIApplication + Extention.swift */,
-				97276C66265821DB002D42E2 /* UIImage + Extention.swift */,
+				9734D5972636EFB1006F0183 /* UIColor + Extension.swift */,
+				9734D59A2636F16E006F0183 /* UIFont + Extansion.swift */,
+				9734D5A4263708A7006F0183 /* UIImageView + Extension.swift */,
+				9734D5A126370716006F0183 /* UILable + Extension.swift */,
+				9734D5942636E7AA006F0183 /* UIButton + Extension.swift */,
+				976F95122639AEEF004A51C1 /* UISegmentedControl + Extension.swift */,
+				97BFE03D263759AD0058E407 /* UIStackView + Extension.swift */,
+				974F7837264C463500E51723 /* UIView + Extensions.swift */,
+				97276C472657FDB1002D42E2 /* UIApplication + Extension.swift */,
+				97276C66265821DB002D42E2 /* UIImage + Extension.swift */,
+				974F6E2426651810004E2B6F /* UIScrollView + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -441,19 +444,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				975DB2EA2638364C00DDBA6C /* OneLineTextField.swift in Sources */,
-				9734D5952636E7AA006F0183 /* UIButton + Extention.swift in Sources */,
+				9734D5952636E7AA006F0183 /* UIButton + Extension.swift in Sources */,
 				97A5BB2A2642FFA20024680E /* SectionHeader.swift in Sources */,
 				9753C930263ED1C600FDFDAC /* GradientView.swift in Sources */,
 				979796E6263DC23500CD0792 /* CurrentChatCell.swift in Sources */,
-				9734D59B2636F16E006F0183 /* UIFont + Extantion.swift in Sources */,
+				9734D59B2636F16E006F0183 /* UIFont + Extansion.swift in Sources */,
 				97EFC98F2650053200888578 /* AuthError.swift in Sources */,
-				976F95132639AEEF004A51C1 /* UISegmentedControl + extention.swift in Sources */,
+				976F95132639AEEF004A51C1 /* UISegmentedControl + Extension.swift in Sources */,
 				975DB2E726382DB600DDBA6C /* SignUpVIewController.swift in Sources */,
 				97EFC98C2650017D00888578 /* Validators.swift in Sources */,
 				976F951F263ADFC5004A51C1 /* PeopleViewController.swift in Sources */,
-				974F7838264C463500E51723 /* UIView + Extentions.swift in Sources */,
+				974F7838264C463500E51723 /* UIView + Extensions.swift in Sources */,
 				97ED6664265419D700A42844 /* AuthNavigationDelegate.swift in Sources */,
-				9734D5982636EFB1006F0183 /* UIColor + Extention.swift in Sources */,
+				9734D5982636EFB1006F0183 /* UIColor + Extension.swift in Sources */,
 				97238A90261B893000A328BC /* AuthViewController.swift in Sources */,
 				97ED6667265584D700A42844 /* FirestoreService.swift in Sources */,
 				974F6E222663F591004E2B6F /* ChatViewController.swift in Sources */,
@@ -461,6 +464,7 @@
 				974F782F264ACFB000E51723 /* ProfileViewController.swift in Sources */,
 				976F9526263AFACF004A51C1 /* ListViewController.swift in Sources */,
 				97E7C588265BE88000628F45 /* MessageModel.swift in Sources */,
+				974F6E2526651810004E2B6F /* UIScrollView + Extension.swift in Sources */,
 				979796DC263DABCC00CD0792 /* BundleDecodable.swift in Sources */,
 				97BFE03A26374E7F0058E407 /* ButtonsViews.swift in Sources */,
 				97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */,
@@ -472,17 +476,17 @@
 				974F783B264D4E9300E51723 /* СhatRequestViewController.swift in Sources */,
 				97A5BB242642E75E0024680E /* SelfCellConfiguration.swift in Sources */,
 				97276C6426581CC4002D42E2 /* StorageService.swift in Sources */,
-				97BFE03E263759AD0058E407 /* UIStackView + Extention.swift in Sources */,
+				97BFE03E263759AD0058E407 /* UIStackView + Extension.swift in Sources */,
 				97EA308526472BF3006C9CDC /* UserCell.swift in Sources */,
 				976F9508263983ED004A51C1 /* SetProfileInfoViewController.swift in Sources */,
 				97EA308926472EBA006C9CDC /* UIViewController + Extention.swift in Sources */,
 				97A5BB212642E05A0024680E /* WaitingChatCell.swift in Sources */,
-				9734D5A226370716006F0183 /* UILable + Extention.swift in Sources */,
-				9734D5A5263708A7006F0183 /* UIImageView + Extention.swift in Sources */,
+				9734D5A226370716006F0183 /* UILable + Extension.swift in Sources */,
+				9734D5A5263708A7006F0183 /* UIImageView + Extension.swift in Sources */,
 				975DB2EE26385CEE00DDBA6C /* LoginViewController.swift in Sources */,
 				9753ACD2264EC05D00187220 /* AuthService.swift in Sources */,
-				97276C67265821DB002D42E2 /* UIImage + Extention.swift in Sources */,
-				97276C482657FDB1002D42E2 /* UIApplication + Extention.swift in Sources */,
+				97276C67265821DB002D42E2 /* UIImage + Extension.swift in Sources */,
+				97276C482657FDB1002D42E2 /* UIApplication + Extension.swift in Sources */,
 				97238A8E261B893000A328BC /* SceneDelegate.swift in Sources */,
 				97E7C58B265E97D400628F45 /* WaitingChatsNavigation.swift in Sources */,
 				976F951C263ADBC0004A51C1 /* MainTabBarController.swift in Sources */,

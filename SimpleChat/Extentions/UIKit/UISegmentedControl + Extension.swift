@@ -1,5 +1,5 @@
 //
-//  UISegmentedControl + extention.swift
+//  UISegmentedControl + Extension.swift
 //  SimpleChat
 //
 //  Created by Maksym Levytskyi on 28.04.2021.

@@ -1,5 +1,5 @@
 //
-//  UIFont + Extantion.swift
+//  UIFont + Extansion.swift
 //  SimpleChat
 //
 //  Created by Maksym Levytskyi on 26.04.2021.

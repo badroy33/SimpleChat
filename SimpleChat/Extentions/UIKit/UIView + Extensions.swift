@@ -1,5 +1,5 @@
 //
-//  UIView + Extentions.swift
+//  UIView + Extensions.swift
 //  SimpleChat
 //
 //  Created by Maksym Levytskyi on 12.05.2021.

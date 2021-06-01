@@ -1,5 +1,5 @@
 //
-//  UIImage + Extention.swift
+//  UIImage + Extension.swift
 //  SimpleChat
 //
 //  Created by Maksym Levytskyi on 26.04.2021.

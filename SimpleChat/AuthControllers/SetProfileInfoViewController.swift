@@ -68,7 +68,6 @@ extension SetProfileInfoViewController{
             switch result{
             case .success(let muser):
                 print("suc max")
-//                self.showAlert(with: "Succes", message: "Your has been loged in")
                 let mainTabBarController = MainTabBarController(currentUser: muser)
                 mainTabBarController.modalPresentationStyle = .fullScreen
                 self.present(mainTabBarController, animated: true, completion: nil)
@@ -109,15 +108,15 @@ extension SetProfileInfoViewController{
         
         
         NSLayoutConstraint.activate([
-            profileInfoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            profileInfoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
             profileInfoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            addPhotoView.topAnchor.constraint(equalTo: profileInfoLabel.bottomAnchor, constant: 50),
+            addPhotoView.topAnchor.constraint(equalTo: profileInfoLabel.bottomAnchor, constant: 30),
             addPhotoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             continueButton.heightAnchor.constraint(equalToConstant: 55),
             
-            stackView.topAnchor.constraint(equalTo: addPhotoView.bottomAnchor, constant: 50),
+            stackView.topAnchor.constraint(equalTo: addPhotoView.bottomAnchor, constant: 30),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])

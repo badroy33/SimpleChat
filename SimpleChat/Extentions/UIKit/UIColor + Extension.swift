@@ -1,5 +1,5 @@
 //
-//  UIColor + Extention.swift
+//  UIColor + Extension.swift
 //  SimpleChat
 //
 //  Created by Maksym Levytskyi on 26.04.2021.

@@ -88,7 +88,7 @@ class ListenerService {
     }//waitingChatsObserve
     
     
-    func currentChatsObserve(chats: [ChatModel],  completion: @escaping (Result<[ChatModel], Error>) -> Void) -> ListenerRegistration?{
+    func currentChatsObserve(chats: [ChatModel], completion: @escaping (Result<[ChatModel], Error>) -> Void) -> ListenerRegistration?{
         var chats = chats
         let chatsRef = db.collection(["users", currentUserUID, "currentChats"].joined(separator: "/"))
         
@@ -117,6 +117,31 @@ class ListenerService {
         }
         return chatsListener
     }//currentChatsObserve
+    
+    
+    func messagesObserve(chat: ChatModel, completion: @escaping (Result<MessageModel, Error>) -> Void) -> ListenerRegistration?{
+        let ref = usersRef.document(currentUserUID).collection("currentChats").document(chat.friendID).collection("messages")
+        let messageListener = ref.addSnapshotListener { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                completion(.failure(error!))
+                return
+            }
+            
+            snapshot.documentChanges.forEach { (difference) in
+                guard let message = MessageModel(queryDocumentSnapshot: difference.document) else { return }
+                
+                switch difference.type{
+                case .added:
+                    completion(.success(message))
+                case .modified:
+                    break
+                case .removed:
+                    break
+                }
+            }
+        }
+        return messageListener
+    }
     
 }
 

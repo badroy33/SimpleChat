@@ -74,7 +74,7 @@ extension SignUpVIewController{
         let passwordView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 10)
         let confirmPasswordView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 10)
         
-        let stackView = UIStackView(arrangedSubviews: [emailView, passwordView, confirmPasswordView, signUpButton], axis: .vertical, spacing: 50
+        let stackView = UIStackView(arrangedSubviews: [emailView, passwordView, confirmPasswordView, signUpButton], axis: .vertical, spacing: 30
         )
         
         let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton], axis: .horizontal, spacing: 15)
@@ -91,7 +91,7 @@ extension SignUpVIewController{
         view.addSubview(bottomStackView)
         
         NSLayoutConstraint.activate([
-            helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             helloLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: 55),
             stackView.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 100),
