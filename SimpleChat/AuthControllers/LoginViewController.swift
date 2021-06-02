@@ -128,7 +128,7 @@ extension LoginViewController{
             welcomeBackLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             
-            stackView.topAnchor.constraint(equalTo: welcomeBackLabel.bottomAnchor, constant: 70),
+            stackView.topAnchor.constraint(equalTo: welcomeBackLabel.bottomAnchor, constant: 30),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             

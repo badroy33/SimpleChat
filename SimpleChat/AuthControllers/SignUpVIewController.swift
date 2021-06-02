@@ -43,6 +43,7 @@ class SignUpVIewController: UIViewController{
         
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        view.endEditing(true)
     }
     
     
@@ -91,10 +92,10 @@ extension SignUpVIewController{
         view.addSubview(bottomStackView)
         
         NSLayoutConstraint.activate([
-            helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            helloLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             helloLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: 55),
-            stackView.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 100),
+            stackView.topAnchor.constraint(equalTo: helloLabel.bottomAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),

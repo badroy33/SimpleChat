@@ -42,7 +42,8 @@ class ChatViewController: MessagesViewController{
         if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout{
             layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
             layout.textMessageSizeCalculator.incomingAvatarSize = .zero
-
+            layout.photoMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.photoMessageSizeCalculator.incomingAvatarSize = .zero
         }
         
         messagesCollectionView.backgroundColor = #colorLiteral(red: 0.9098170996, green: 0.9044087529, blue: 0.9139745235, alpha: 1)
@@ -54,8 +55,19 @@ class ChatViewController: MessagesViewController{
         
         messageListener = ListenerService.shared.messagesObserve(chat: currentChat, completion: { (result) in
             switch result{
-            case .success(let message):
-                self.insertNewMessage(message: message)
+            case .success(var message):
+                if let url = message.downloadURL{
+                    StorageService.shared.downloadImage(url: url) {[weak self] result in
+                        guard let self = self else { return }
+                        switch result{
+                        case .success(let image):
+                            message.image = image
+                            self.insertNewMessage(message: message)
+                        case .failure(let error):
+                            self.showAlert(with: "Error", message: error.localizedDescription)
+                        }
+                    }
+                }else { self.insertNewMessage(message: message) }
             case .failure(let error):
                 self.showAlert(with: "Error", message: error.localizedDescription)
             }
@@ -77,6 +89,39 @@ class ChatViewController: MessagesViewController{
                 self.messagesCollectionView.scrollToBottom(animated: true)
             }
         }
+    }
+    
+    private func sendImage(image: UIImage){
+        StorageService.shared.uploadImageMessage(image: image, to: currentChat) { result in
+            switch result{
+            case .success(let url):
+                var imageMessage = MessageModel(user: self.currentUser, image: image)
+                imageMessage.downloadURL = url
+                FirestoreService.shared.sendMessage(chat: self.currentChat, message: imageMessage) { result in
+                    switch result{
+                    case .success():
+                        self.messagesCollectionView.scrollToBottom(animated: true)
+                    case .failure(let error):
+                        self.showAlert(with: "Error", message: error.localizedDescription)
+                    }
+                }
+            case .failure(let error):
+                self.showAlert(with: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+    
+    @objc func cametaButtonTapped(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            imagePicker.sourceType = .camera
+        }else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -178,6 +223,7 @@ extension ChatViewController{
         messageInputBar.layer.shadowOffset = CGSize(width: 0, height: 4)
         
         configureSendButton()
+        configureCameraIcon()
     }
     
     func configureSendButton() {
@@ -189,6 +235,21 @@ extension ChatViewController{
         messageInputBar.middleContentViewPadding.right = -38
     }
     
+    
+    func configureCameraIcon(){
+        let cameraItem = InputBarButtonItem(type: .system)
+        cameraItem.tintColor = #colorLiteral(red: 0.8211756349, green: 0.5609566569, blue: 1, alpha: 1)
+        let cameraImage = UIImage(systemName: "camera")
+        cameraItem.image = cameraImage
+        
+        cameraItem.addTarget(self, action: #selector(cametaButtonTapped), for: .primaryActionTriggered)
+        cameraItem.setSize(CGSize(width: 60, height: 30), animated: false)
+        
+        messageInputBar.leftStackView.alignment = .center
+        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+        
+        messageInputBar.setStackViewItems([cameraItem], forStack: .left, animated: false)
+    }
 }
 
 
@@ -207,5 +268,18 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             }
         }
         inputBar.inputTextView.text = ""
+    }
+}
+
+
+
+//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        
+        sendImage(image: image)
     }
 }
