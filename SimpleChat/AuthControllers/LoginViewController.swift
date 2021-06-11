@@ -29,8 +29,8 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    let emailTextField = OneLineTextField(font: UIFont.avenirNextMedium18())
-    let passwordTextField = OneLineTextField(font: UIFont.avenirNextMedium20())
+    let emailTextField = OneLineTextField()
+    let passwordTextField = OneLineTextField(secureText: true)
     
     weak var delegate: AuthNavigationDelegate?
     
@@ -38,11 +38,11 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpConstraints()
+        textFieldsSetUp()
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
-
     }
 
     
@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { (result) in
             switch result{
             case .success(let user):
-//                self.showAlert(with: "Succes", message: "Your has been loged in")
                 FirestoreService.shared.getUserData(from: user) { (result) in
                     switch result{
                     case .success(let muser):
@@ -65,20 +64,30 @@ class LoginViewController: UIViewController {
                 self.showAlert(with: "Error", message: error.localizedDescription)
             }
         }
-        print(#function)
     }
     
     @objc private func signUpButtonTapped(){
         dismiss(animated: true) {
             self.delegate?.toSignUpVC()
         }
-        print(#function)
     }
     
     @objc private func googleButtonTapped(){
-        print(#function)
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    private func textFieldsSetUp(){
+        self.emailTextField.textColor = .black
+        self.passwordTextField.textColor = .black
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }
 

@@ -8,11 +8,13 @@
 import UIKit
 
 class OneLineTextField: UITextField {
-    convenience init(font: UIFont? = .avenirNextMedium20()){
+    convenience init(font: UIFont? = .avenirNextMedium20(), secureText: Bool = false){
         self.init()
-        
-        self.font = font
+
         self.borderStyle = .none
+        self.textColor = .black
+        self.isSecureTextEntry = secureText
+        self.textContentType = .oneTimeCode
         self.translatesAutoresizingMaskIntoConstraints = false
         
         var lineView = UIView()

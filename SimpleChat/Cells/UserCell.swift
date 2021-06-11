@@ -51,7 +51,6 @@ class UserCell: UICollectionViewCell, SelfCellConfiguration {
         userImageView.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        userImageView.backgroundColor = .red
 
         containerView.addSubview(userImageView)
         containerView.addSubview(userNameLabel)
@@ -72,9 +71,7 @@ class UserCell: UICollectionViewCell, SelfCellConfiguration {
             userNameLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor),
             userNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
             userNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 8),
-            userNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-            
-            
+            userNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)  
         ])
         
     }

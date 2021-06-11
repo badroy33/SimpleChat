@@ -12,7 +12,6 @@ import FirebaseFirestore
 class PeopleViewController: UIViewController {
 
     
-//    var users = Bundle.main.decode([UserModel].self, from: "users.json")
     var users = [UserModel]()
     var usersListener: ListenerRegistration?
     var collectionView: UICollectionView!
@@ -51,11 +50,8 @@ class PeopleViewController: UIViewController {
         view.backgroundColor = .mainWhiteColor()
         setUpSearchBar()
         setUpCollectionView()
+        setUpNavigationBar()
         createDataSource()
-
-        users.forEach { (user) in
-            print(user.username)
-        }
         
         usersListener = ListenerService.shared.usersObserve(users: users, completion: { (result) in
             switch result{
@@ -101,6 +97,11 @@ class PeopleViewController: UIViewController {
     }
     
     
+    private func setUpNavigationBar(){
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
+    
+    
     private func setUpSearchBar(){
         navigationController?.navigationBar.barTintColor = UIColor.mainWhiteColor()
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -110,6 +111,11 @@ class PeopleViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        searchController.searchBar.searchTextField.textColor = .black
+        let glassIconView = searchController.searchBar.searchTextField.leftView as? UIImageView
+
+        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
     
     func reloadData(with searchText: String?){
@@ -122,6 +128,10 @@ class PeopleViewController: UIViewController {
         snapShot.appendItems(filtered, toSection: .users)
 
         diffableDataSource?.apply(snapShot, animatingDifferences: true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
@@ -158,7 +168,7 @@ extension PeopleViewController{
                 fatalError("Unknown section kind")
             }
             let items = self.diffableDataSource.snapshot().itemIdentifiers(inSection: .users)
-            sectionHeader.configure(text: section.description(usersCount: items.count), textColor: .label, font: .systemFont(ofSize: 36, weight: .light))
+            sectionHeader.configure(text: section.description(usersCount: items.count), textColor: .black, font: .systemFont(ofSize: 36, weight: .light))
             
             return sectionHeader
         }

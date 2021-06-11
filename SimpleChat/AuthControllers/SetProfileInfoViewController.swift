@@ -17,7 +17,7 @@ class SetProfileInfoViewController: UIViewController {
     let aboutMeLabel = UILabel(text: "About me")
     let sexLabel = UILabel(text: "Sex")
     
-    let fullNameTextField = OneLineTextField(font: UIFont.avenirNextMedium18())
+    let fullNameTextField = OneLineTextField(font: UIFont.avenirNextMedium20())
     let aboutMeTextField = OneLineTextField(font: UIFont.avenirNextMedium20())
     
     let sexSegmentedControl = (UISegmentedControl(firstElement: "Male", secondElement: "Female"))
@@ -50,15 +50,26 @@ class SetProfileInfoViewController: UIViewController {
         setUpConstraints()
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         addPhotoView.plusButton.addTarget(self, action: #selector(plusButtontapped), for: .touchUpInside)
+        
+        fullNameTextField.textColor = .black
+        aboutMeTextField.textColor = .black
     }
 
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
 }
 
 //MARK: - Actions
 
 extension SetProfileInfoViewController{
     @objc func continueButtonTapped(){
-        print(#function)
         FirestoreService.shared.saveProfileWith(id: currentUser.uid,
                                                 email: currentUser.email!,
                                                 username: fullNameTextField.text,
@@ -67,13 +78,11 @@ extension SetProfileInfoViewController{
                                                 sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
             switch result{
             case .success(let muser):
-                print("suc max")
                 let mainTabBarController = MainTabBarController(currentUser: muser)
                 mainTabBarController.modalPresentationStyle = .fullScreen
                 self.present(mainTabBarController, animated: true, completion: nil)
             case .failure(let error):
                 self.showAlert(with: "Error", message: error.localizedDescription)
-                print("fail max")
             }
         }
     }

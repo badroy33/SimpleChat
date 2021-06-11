@@ -218,8 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				976F951B263ADBC0004A51C1 /* MainTabBarController.swift */,
-				976F9525263AFACF004A51C1 /* ListViewController.swift */,
 				976F951E263ADFC5004A51C1 /* PeopleViewController.swift */,
+				976F9525263AFACF004A51C1 /* ListViewController.swift */,
 				974F782E264ACFB000E51723 /* ProfileViewController.swift */,
 				974F783A264D4E9300E51723 /* СhatRequestViewController.swift */,
 				974F6E212663F591004E2B6F /* ChatViewController.swift */,
@@ -255,7 +255,6 @@
 				976F950A26398B2B004A51C1 /* AddPhotoView.swift */,
 				979796DB263DABCC00CD0792 /* BundleDecodable.swift */,
 				9753C92F263ED1C600FDFDAC /* GradientView.swift */,
-				97EA308826472EBA006C9CDC /* UIViewController + Extention.swift */,
 				974F7832264C374700E51723 /* InsertableTextField.swift */,
 				97BFE036263747DD0058E407 /* UIKit */,
 				976F2EB52645A4EF002F11A0 /* Header */,
@@ -266,6 +265,7 @@
 		97BFE036263747DD0058E407 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				97EA308826472EBA006C9CDC /* UIViewController + Extention.swift */,
 				9734D5972636EFB1006F0183 /* UIColor + Extension.swift */,
 				9734D59A2636F16E006F0183 /* UIFont + Extansion.swift */,
 				9734D5A4263708A7006F0183 /* UIImageView + Extension.swift */,

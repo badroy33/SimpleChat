@@ -41,6 +41,7 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         setUpCollectionView()
         setUpSearchBar()
+        setUpNavigationBar()
         createDataSource()
         reloadData()
         
@@ -98,6 +99,12 @@ class ListViewController: UIViewController {
         collectionView.delegate = self
     }
     
+    
+    private func setUpNavigationBar(){
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+    }
+    
     private func setUpSearchBar(){
         navigationController?.navigationBar.barTintColor = UIColor.mainWhiteColor()
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -107,6 +114,12 @@ class ListViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        
+        searchController.searchBar.searchTextField.textColor = .black
+        let glassIconView = searchController.searchBar.searchTextField.leftView as? UIImageView
+
+        glassIconView?.image = glassIconView?.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
     
     func reloadData(){
@@ -115,6 +128,10 @@ class ListViewController: UIViewController {
         snapShot.appendItems(waitingChats, toSection: .waitingChats)
         snapShot.appendItems(currentChats, toSection: .currentChats)
         diffableDataSource?.apply(snapShot, animatingDifferences: true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
@@ -236,7 +253,6 @@ extension ListViewController: UICollectionViewDelegate{
             chatRequestVC.delegate = self
             present(chatRequestVC, animated: true, completion: nil)
         case .currentChats:
-            print(indexPath)
             let ChatVC = ChatViewController(currentUser: currentUser, currentChat: chat)
             navigationController?.pushViewController(ChatVC, animated: true)
         }
@@ -276,7 +292,6 @@ extension ListViewController: WaitingChatsNavigation{
 
 extension ListViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
     }
     
 }

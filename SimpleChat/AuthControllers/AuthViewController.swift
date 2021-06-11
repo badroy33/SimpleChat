@@ -39,19 +39,20 @@ class AuthViewController: UIViewController {
     }
     
     @objc private func emailButtonTapped(){
-        print(#function)
         present(signUpVC, animated: true, completion: nil)
     }
     
     @objc private func loginButtonTapped(){
-        print(#function)
         present(loginVC, animated: true, completion: nil)
     }
     
     @objc private func googleButtonTapped(){
-        print(#function)
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }
 
@@ -103,14 +104,15 @@ extension AuthViewController {
         
         
         NSLayoutConstraint.activate([
-                                        logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+                                        logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
                                         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
         
-        NSLayoutConstraint.activate([stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 70),
+        NSLayoutConstraint.activate([stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 30),
                                      stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
                                      stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
+    
     
 }
 

@@ -12,13 +12,13 @@ class ProfileViewController: UIViewController {
     
     let containerView = UIView()
     var profileImageView = UIImageView(image: #imageLiteral(resourceName: "human3"), contentMode: .scaleAspectFill)
-    var nameLabel = UILabel(text: "Rob Shnider", font: .systemFont(ofSize: 20, weight: .light),textColor: .black)
-    var aboutMeLabel = UILabel(text: "I'm the real man. Germans hi hitler see you in hell.", font: .systemFont(ofSize: 18, weight: .light), textColor: UIColor.buttonDarkTextColor())
+    var nameLabel = UILabel(text: "Jack White", font: .systemFont(ofSize: 20, weight: .light),textColor: .black)
+    var aboutMeLabel = UILabel(text: "Hello, i like joking.", font: .systemFont(ofSize: 18, weight: .light), textColor: UIColor.buttonDarkTextColor())
     let textField = InsertableTextField()
     
     private let user: UserModel
     
-    init(user: UserModel = UserModel(username: "abs", email: "asd", avatarStringURL: "asd", description: "asd", sex: "asd", id: "asd")) {
+    init(user: UserModel = UserModel(username: "username", email: "email", avatarStringURL: "avatarStringURL", description: "description", sex: "sex", id: "id")) {
         self.user = user
         self.profileImageView.sd_setImage(with: URL(string: user.avatarStringURL), completed: nil)
         self.nameLabel.text = user.username
@@ -35,6 +35,11 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setUpConstraints()
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
 }
@@ -95,7 +100,6 @@ extension ProfileViewController{
     }
     
     @objc private func sendMessage(){
-        print(#function)
         guard let message = textField.text, message != "" else { return }
         self.dismiss(animated: true) {
             FirestoreService.shared.createWaitingChat(message: message, reciver: self.user) { (result) in

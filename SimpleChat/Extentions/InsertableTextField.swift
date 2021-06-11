@@ -24,6 +24,7 @@ class InsertableTextField: UITextField{
         leftView = imageView
         leftView?.frame = CGRect(x: 0, y: 0, width: 19, height: 19)
         leftViewMode = .always
+        textColor = .black
         
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "Sent"), for: .normal)

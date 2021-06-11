@@ -37,7 +37,14 @@ class ChatViewController: MessagesViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        navigationController?.navigationBar.barTintColor = .white
+//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
         configureMessageInputBar()
+
+        DispatchQueue.main.async {
+            self.messagesCollectionView.scrollToItem(at: IndexPath(row: 0, section: self.messages.count - 1), at: .bottom, animated: false)
+           }
         
         if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout{
             layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
@@ -47,7 +54,6 @@ class ChatViewController: MessagesViewController{
         }
         
         messagesCollectionView.backgroundColor = #colorLiteral(red: 0.9098170996, green: 0.9044087529, blue: 0.9139745235, alpha: 1)
-        
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -115,13 +121,18 @@ class ChatViewController: MessagesViewController{
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            imagePicker.sourceType = .camera
-        }else {
-            imagePicker.sourceType = .photoLibrary
-        }
-        
+//        if UIImagePickerController.isSourceTypeAvailable(.camera){
+//            imagePicker.sourceType = .camera
+//        }else {
+//            imagePicker.sourceType = .photoLibrary
+//        }
+        imagePicker.sourceType = .photoLibrary
+
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
@@ -205,7 +216,15 @@ extension ChatViewController{
     func configureMessageInputBar() {
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
-        messageInputBar.backgroundView.backgroundColor = .mainWhiteColor()
+        messageInputBar.inputTextView.textColor = .black
+        messageInputBar.inputTextView.keyboardAppearance = UIKeyboardAppearance.light
+        messageInputBar.backgroundView.backgroundColor = .white
+        messageInputBar.backgroundView.layer.backgroundColor = UIColor.white.cgColor
+        messageInputBar.backgroundView.alpha = 1
+        messageInputBar.backgroundColor = .white
+        messageInputBar.tintColor = .white
+        messageInputBar.alpha = 1
+        messageInputBar.backgroundView.tintColor = .white
         messageInputBar.inputTextView.backgroundColor = .white
         messageInputBar.inputTextView.placeholderTextColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 14, left: 30, bottom: 14, right: 36)

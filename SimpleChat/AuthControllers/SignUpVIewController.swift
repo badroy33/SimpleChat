@@ -17,9 +17,9 @@ class SignUpVIewController: UIViewController{
     let confirmPasswordLabel = UILabel(text: "Confirm password")
     let alreadyOnboardLabel = UILabel(text: "Already onboard?")
     
-    let emailTextField = OneLineTextField(font: UIFont.avenirNextMedium20())
-    let passwordTextField = OneLineTextField(font: UIFont.avenirNextMedium20())
-    let confirmPasswordTextField = OneLineTextField(font: UIFont.avenirNextMedium20())
+    let emailTextField = OneLineTextField()
+    let passwordTextField = OneLineTextField(secureText: true)
+    let confirmPasswordTextField = OneLineTextField(secureText: true)
 
     
     let signUpButton = UIButton(title: "Sign Up", titleColor: .white, backgroundColor: UIColor.buttonBackgroungColorPurple())
@@ -34,16 +34,14 @@ class SignUpVIewController: UIViewController{
     
     weak var delegate: AuthNavigationDelegate?
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupConstraints()
+        textFieldsSetUp()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        view.endEditing(true)
     }
     
     
@@ -52,22 +50,37 @@ class SignUpVIewController: UIViewController{
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { (result) in
             switch result{
             case .success(let muser):
-//                self.showAlert(with: "Succes", message: "Your profile has been create.")
                 self.present(SetProfileInfoViewController(currentUser: muser), animated: true, completion: nil)
             case .failure(let error):
                 self.showAlert(with: "Error", message: error.localizedDescription)
             }
         }
-        print(#function)
     }
     
     @objc private func loginButtonTapped(){
         dismiss(animated: true) {
             self.delegate?.tologinVC()
         }
-        print(#function)
+    }
+    
+    private func textFieldsSetUp(){
+        self.emailTextField.textColor = .black
+        self.passwordTextField.textColor = .black
+        self.confirmPasswordTextField.textColor = .black
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }
+
+
+//MARK: = setupConstraints()
 
 extension SignUpVIewController{
     private func setupConstraints(){
