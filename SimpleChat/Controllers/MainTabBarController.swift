@@ -43,7 +43,7 @@ class MainTabBarController: UITabBarController{
     }
     
     
-    func getANavigationController(viewController: UIViewController, title: String, image: UIImage) -> UINavigationController{
+    func getANavigationController(viewController: UIViewController, title: String, image: UIImage) -> UINavigationController {
         let navigationVC = UINavigationController(rootViewController: viewController)
         navigationVC.tabBarItem.title = title
         navigationVC.tabBarItem.image = image

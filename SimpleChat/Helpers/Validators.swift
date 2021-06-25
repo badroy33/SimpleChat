@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Validators{
+class Validators {
     
-    static func isFilled(email: String?, password: String?, confirmPassword: String?) -> Bool{
+    static func isFilled(email: String?, password: String?, confirmPassword: String?) -> Bool {
         guard let email = email,
               let password = password,
               let confirmPassword = confirmPassword,
@@ -19,7 +19,7 @@ class Validators{
         return true
     }
     
-    static func isFilled(username: String?, description: String?, sex: String?) -> Bool{
+    static func isFilled(username: String?, description: String?, sex: String?) -> Bool {
         guard let username = username,
               let description = description,
               let sex = sex,

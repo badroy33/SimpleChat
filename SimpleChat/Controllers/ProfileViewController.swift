@@ -45,8 +45,8 @@ class ProfileViewController: UIViewController {
 }
 
 
-extension ProfileViewController{
-    private func setUpConstraints(){
+extension ProfileViewController {
+    private func setUpConstraints() {
         editElements()
         containerView.addSubview(nameLabel)
         containerView.addSubview(aboutMeLabel)
@@ -83,7 +83,7 @@ extension ProfileViewController{
         ])
     }
     
-    private func editElements(){
+    private func editElements() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +99,7 @@ extension ProfileViewController{
         }
     }
     
-    @objc private func sendMessage(){
+    @objc private func sendMessage() {
         guard let message = textField.text, message != "" else { return }
         self.dismiss(animated: true) {
             FirestoreService.shared.createWaitingChat(message: message, reciver: self.user) { (result) in
@@ -119,7 +119,7 @@ extension ProfileViewController{
 
 import SwiftUI
 
-struct ProfileVCProvider: PreviewProvider{
+struct ProfileVCProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

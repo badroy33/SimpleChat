@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 
-class AuthService{
+class AuthService {
     static let shared = AuthService()
     let auth = Auth.auth()
     
@@ -31,7 +31,7 @@ class AuthService{
         }
         
         auth.createUser(withEmail: email!, password: password!) { (result, error) in
-            guard let result = result else{
+            guard let result = result else {
                 completion(.failure(error!))
                 return
             }
@@ -40,7 +40,7 @@ class AuthService{
         }
     }
     
-    func login(email: String?, password: String?, completion: @escaping (Result<User, Error>) -> Void){
+    func login(email: String?, password: String?, completion: @escaping (Result<User, Error>) -> Void) {
         guard let email = email, let password = password else {
             completion(.failure(AuthError.notFilled))
             return
@@ -55,7 +55,7 @@ class AuthService{
         }
     }
     
-    func loginWithGoogle(user: GIDGoogleUser, error: Error!, completion: @escaping (Result<User, Error>) -> Void){
+    func loginWithGoogle(user: GIDGoogleUser, error: Error!, completion: @escaping (Result<User, Error>) -> Void) {
         if let error = error{
             completion(.failure(error))
         }

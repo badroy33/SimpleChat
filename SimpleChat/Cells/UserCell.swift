@@ -47,7 +47,7 @@ class UserCell: UICollectionViewCell, SelfCellConfiguration {
         userImageView.sd_setImage(with: url, completed: nil)
     }
     
-    private func setUpConstraints(){
+    private func setUpConstraints() {
         userImageView.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +86,7 @@ class UserCell: UICollectionViewCell, SelfCellConfiguration {
 
 import SwiftUI
 
-struct UserCellProvider: PreviewProvider{
+struct UserCellProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

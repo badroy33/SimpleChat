@@ -7,7 +7,7 @@
 import Firebase
 import FirebaseFirestore
 
-class FirestoreService{
+class FirestoreService {
     static let shared = FirestoreService()
     let db = Firestore.firestore()
     
@@ -27,7 +27,7 @@ class FirestoreService{
     
     
     
-    func getUserData(from user: User, completion: @escaping (Result<UserModel, Error>) -> Void ){
+    func getUserData(from user: User, completion: @escaping (Result<UserModel, Error>) -> Void ) {
         let docRef = userRef.document(user.uid)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists{
@@ -80,7 +80,7 @@ class FirestoreService{
         }//StorageService
     }//saveProfileWith
     
-    func createWaitingChat(message: String, reciver: UserModel, completion: @escaping (Result<Void, Error>) -> Void){
+    func createWaitingChat(message: String, reciver: UserModel, completion: @escaping (Result<Void, Error>) -> Void) {
         let reference = db.collection(["users", reciver.id, "waitingChats"].joined(separator: "/"))
         let messageRef = reference.document(self.currentUser.id).collection("messages")
         
@@ -92,7 +92,7 @@ class FirestoreService{
                              friendID: currentUser.id)
     
         reference.document(currentUser.id).setData(chat.representation) { (error) in
-            if let error = error{
+            if let error = error {
                 completion(.failure(error))
                 return
             }
@@ -106,9 +106,9 @@ class FirestoreService{
         }
     }
     
-    func deleteWaitingChat(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void){
+    func deleteWaitingChat(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void) {
         waitingChatsRef.document(chat.friendID).delete { (error) in
-            if let error = error{
+            if let error = error {
                 completion(.failure(error))
                 return
             }
@@ -116,7 +116,7 @@ class FirestoreService{
         }
     }
     
-    func deleteMessages(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void){
+    func deleteMessages(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void) {
         let referance = waitingChatsRef.document(chat.friendID).collection("messages")
         
         self.getWaitingChatMessages(chat: chat) { (result) in
@@ -140,7 +140,7 @@ class FirestoreService{
         }
     }
     
-    func getWaitingChatMessages(chat: ChatModel, completion: @escaping (Result<[MessageModel], Error>) -> Void){
+    func getWaitingChatMessages(chat: ChatModel, completion: @escaping (Result<[MessageModel], Error>) -> Void) {
         let referance = waitingChatsRef.document(chat.friendID).collection("messages")
         var messages = [MessageModel]()
         referance.getDocuments { (querySnapshot, error) in
@@ -149,7 +149,7 @@ class FirestoreService{
                 return
             }
             
-            for document in querySnapshot!.documents{
+            for document in querySnapshot!.documents {
                 guard let message = MessageModel(queryDocumentSnapshot: document) else { return }
                 messages.append(message)
             }
@@ -158,9 +158,9 @@ class FirestoreService{
     }
     
     
-    func changeToCurrentChat(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void){
+    func changeToCurrentChat(chat: ChatModel, completion: @escaping (Result<Void, Error>) -> Void) {
         self.getWaitingChatMessages(chat: chat) { (result) in
-            switch result{
+            switch result {
             case .success(let messages):
                 self.deleteWaitingChat(chat: chat) { (result) in
                     switch result{
@@ -184,7 +184,7 @@ class FirestoreService{
     }
     
     
-    func createCurrentChat(chat: ChatModel, messages: [MessageModel],  completion: @escaping (Result<Void, Error>) -> Void){
+    func createCurrentChat(chat: ChatModel, messages: [MessageModel],  completion: @escaping (Result<Void, Error>) -> Void) {
         let messagesRef = currentChatsRef.document(chat.friendID).collection("messages")
         currentChatsRef.document(chat.friendID).setData(chat.representation) { (error) in
             if let error = error {
@@ -205,7 +205,7 @@ class FirestoreService{
     }
     
     
-    func sendMessage(chat: ChatModel, message: MessageModel,  completion: @escaping (Result<Void, Error>) -> Void){
+    func sendMessage(chat: ChatModel, message: MessageModel,  completion: @escaping (Result<Void, Error>) -> Void) {
         let friendRef = userRef.document(chat.friendID).collection("currentChats").document(currentUser.id)
         let friendMessagesRef = friendRef.collection("messages")
         let myMessagesRef = userRef.document(currentUser.id).collection("currentChats").document(chat.friendID).collection("messages")

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddPhotoView: UIView{
+class AddPhotoView: UIView {
     var avatarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

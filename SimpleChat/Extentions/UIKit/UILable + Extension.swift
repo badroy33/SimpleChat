@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UILabel{
+extension UILabel {
     convenience init(text: String, font: UIFont? = UIFont.avenirNextMedium18(), textColor: UIColor = UIColor.buttonDarkTextColor()){
         self.init()
         self.text = text

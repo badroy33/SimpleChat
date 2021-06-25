@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIFont{
-    static func avenirNextMedium16() -> UIFont?{
+    static func avenirNextMedium16() -> UIFont? {
         return UIFont(name: "AvenirNext-Medium", size: 16)
     }
     static func avenirNextMedium18() -> UIFont?{

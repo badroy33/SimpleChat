@@ -8,7 +8,7 @@
 import UIKit
 
 class OneLineTextField: UITextField {
-    convenience init(font: UIFont? = .avenirNextMedium20(), secureText: Bool = false){
+    convenience init(font: UIFont? = .avenirNextMedium20(), secureText: Bool = false) {
         self.init()
 
         self.borderStyle = .none

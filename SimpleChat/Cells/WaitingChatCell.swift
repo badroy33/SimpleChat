@@ -32,8 +32,8 @@ class WaitingChatCell: UICollectionViewCell, SelfCellConfiguration {
 }
 
 
-extension WaitingChatCell{
-    private func setUpConstraints(){
+extension WaitingChatCell {
+    private func setUpConstraints() {
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 5
@@ -53,7 +53,7 @@ extension WaitingChatCell{
 
 import SwiftUI
 
-struct WaitingChatCellProvider: PreviewProvider{
+struct WaitingChatCellProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

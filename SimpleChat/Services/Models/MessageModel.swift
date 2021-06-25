@@ -32,21 +32,21 @@ struct MessageModel: Hashable, MessageType {
         }
     }
     
-    var messageId: String{
+    var messageId: String {
         return id ?? UUID().uuidString
     }
     
     var image: UIImage? = nil
     var downloadURL: URL? = nil
     
-    var representation: [String : Any]{
+    var representation: [String : Any] {
         var rep: [String : Any] = [
             "senderID" : sender.senderId,
             "senderUsername" : sender.displayName,
             "created": sentDate
         ]
         
-        if let url = downloadURL{
+        if let url = downloadURL {
             rep["url"] = url.absoluteString
         }else {
             rep["content"] = content
@@ -54,7 +54,7 @@ struct MessageModel: Hashable, MessageType {
         return rep
     }
     
-    init?(queryDocumentSnapshot: QueryDocumentSnapshot){
+    init?(queryDocumentSnapshot: QueryDocumentSnapshot) {
         let data = queryDocumentSnapshot.data()
         guard let senderID = data["senderID"] as? String,
 //              let content = data["content"] as? String,
@@ -102,7 +102,7 @@ struct MessageModel: Hashable, MessageType {
 }
 
 
-extension MessageModel: Comparable{
+extension MessageModel: Comparable {
     static func < (lhs: MessageModel, rhs: MessageModel) -> Bool {
         return lhs.sentDate < rhs.sentDate 
     }

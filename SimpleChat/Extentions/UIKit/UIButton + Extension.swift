@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIButton{
+extension UIButton {
     convenience init(title: String,
                      titleColor: UIColor,
                      font: UIFont? = UIFont.avenirNextMedium20(),
@@ -30,7 +30,7 @@ extension UIButton{
         }
     }
     
-    func addGoogleImage(){
+    func addGoogleImage() {
         let googleImage = UIImageView(image: #imageLiteral(resourceName: "googleLogo"), contentMode: .scaleToFill)
         googleImage.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(googleImage)

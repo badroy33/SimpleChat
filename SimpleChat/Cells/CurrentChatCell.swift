@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class CurrentChatCell: UICollectionViewCell, SelfCellConfiguration{
+class CurrentChatCell: UICollectionViewCell, SelfCellConfiguration {
     
     static var reuseId: String = "currentChatCell"
     
@@ -41,7 +41,7 @@ class CurrentChatCell: UICollectionViewCell, SelfCellConfiguration{
 // MARK: - Setup constraints
 
 extension CurrentChatCell{
-    private func setUpConstraints(){
+    private func setUpConstraints() {
         userImageView.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         lastMessageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +91,7 @@ extension CurrentChatCell{
 
 import SwiftUI
 
-struct CurrentChatCellProvider: PreviewProvider{
+struct CurrentChatCellProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIColor{
-    static func buttonBackgroungColorPurple() -> UIColor{
+    static func buttonBackgroungColorPurple() -> UIColor {
         return #colorLiteral(red: 0.5647058824, green: 0.4470588235, blue: 0.7215686275, alpha: 1)
     }
     static func buttonDarkTextColor() -> UIColor {

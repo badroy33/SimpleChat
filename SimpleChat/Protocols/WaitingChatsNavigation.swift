@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol WaitingChatsNavigation: class{
+protocol WaitingChatsNavigation: class {
     func removeWaitingChat(chat: ChatModel)
     
     func changeToCurrent(chat: ChatModel)

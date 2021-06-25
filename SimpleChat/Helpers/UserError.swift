@@ -15,8 +15,8 @@ enum UserError {
 }
 
 
-extension UserError: LocalizedError{
-    var errorDescription: String?{
+extension UserError: LocalizedError {
+    var errorDescription: String? {
         switch self {
         case .notFilled:
             return NSLocalizedString("Textfields are not filled", comment: "")

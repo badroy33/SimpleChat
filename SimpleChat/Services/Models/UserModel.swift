@@ -26,7 +26,7 @@ struct UserModel: Hashable, Decodable {
         self.id = id
     }
     
-    init?(documentSnapchot: DocumentSnapshot){
+    init?(documentSnapchot: DocumentSnapshot) {
         guard let data = documentSnapchot.data() else { return nil }
         guard let username = data["username"] as? String,
               let email = data["email"] as? String,
@@ -43,7 +43,7 @@ struct UserModel: Hashable, Decodable {
         self.id = id
     }
     
-    init?(queryDocumentSnapchot: QueryDocumentSnapshot){
+    init?(queryDocumentSnapchot: QueryDocumentSnapshot) {
         let data = queryDocumentSnapchot.data()
         guard let username = data["username"] as? String,
               let email = data["email"] as? String,
@@ -60,7 +60,7 @@ struct UserModel: Hashable, Decodable {
         self.id = id
     }
     
-    var representation: [String: Any]{
+    var representation: [String: Any] {
         var rep = ["username": username]
         rep["email"] = email
         rep["avatarStringURL"] = avatarStringURL

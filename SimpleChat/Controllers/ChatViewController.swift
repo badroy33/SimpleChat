@@ -10,7 +10,7 @@ import MessageKit
 import InputBarAccessoryView
 import FirebaseFirestore
 
-class ChatViewController: MessagesViewController{
+class ChatViewController: MessagesViewController {
     
     private let currentUser: UserModel
     private let currentChat: ChatModel
@@ -19,7 +19,7 @@ class ChatViewController: MessagesViewController{
     
     private var messageListener: ListenerRegistration?
     
-    init(currentUser: UserModel, currentChat: ChatModel){
+    init(currentUser: UserModel, currentChat: ChatModel) {
         self.currentUser = currentUser
         self.currentChat = currentChat
         super.init(nibName: nil, bundle: nil)
@@ -60,7 +60,7 @@ class ChatViewController: MessagesViewController{
         messagesCollectionView.messagesDisplayDelegate = self
         
         messageListener = ListenerService.shared.messagesObserve(chat: currentChat, completion: { (result) in
-            switch result{
+            switch result {
             case .success(var message):
                 if let url = message.downloadURL{
                     StorageService.shared.downloadImage(url: url) {[weak self] result in
@@ -73,14 +73,14 @@ class ChatViewController: MessagesViewController{
                             self.showAlert(with: "Error", message: error.localizedDescription)
                         }
                     }
-                }else { self.insertNewMessage(message: message) }
+                } else { self.insertNewMessage(message: message) }
             case .failure(let error):
                 self.showAlert(with: "Error", message: error.localizedDescription)
             }
         })
     }
     
-    private func insertNewMessage(message: MessageModel){
+    private func insertNewMessage(message: MessageModel) {
         guard !messages.contains(message) else { return }
         messages.append(message)
         messages.sort()
@@ -90,16 +90,16 @@ class ChatViewController: MessagesViewController{
 
         messagesCollectionView.reloadData()
         
-        if shouldScrollToBootom{
+        if shouldScrollToBootom {
             DispatchQueue.main.async {
                 self.messagesCollectionView.scrollToBottom(animated: true)
             }
         }
     }
     
-    private func sendImage(image: UIImage){
+    private func sendImage(image: UIImage) {
         StorageService.shared.uploadImageMessage(image: image, to: currentChat) { result in
-            switch result{
+            switch result {
             case .success(let url):
                 var imageMessage = MessageModel(user: self.currentUser, image: image)
                 imageMessage.downloadURL = url
@@ -117,7 +117,7 @@ class ChatViewController: MessagesViewController{
         }
     }
     
-    @objc func cametaButtonTapped(){
+    @objc func cametaButtonTapped() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
@@ -140,7 +140,7 @@ class ChatViewController: MessagesViewController{
 
 //MARK: - MessagesDataSource
 
-extension ChatViewController: MessagesDataSource{
+extension ChatViewController: MessagesDataSource {
     func currentSender() -> SenderType {
         return Sender(senderId: currentUser.id, displayName: currentUser.username)
     }
@@ -159,11 +159,11 @@ extension ChatViewController: MessagesDataSource{
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
-        if indexPath.item % 4 == 0{
+        if indexPath.item % 4 == 0 {
             return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate),
                                       attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10),
                                                    NSAttributedString.Key.foregroundColor : UIColor.darkGray])
-        }else { return nil }
+        } else { return nil }
         
     }
     
@@ -173,7 +173,7 @@ extension ChatViewController: MessagesDataSource{
 
 //MARK: - MessagesLayoutDelegate
 
-extension ChatViewController: MessagesLayoutDelegate{
+extension ChatViewController: MessagesLayoutDelegate {
     func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
         return CGSize(width: 0, height: 8)
     }
@@ -189,7 +189,7 @@ extension ChatViewController: MessagesLayoutDelegate{
 
 //MARK: - MessagesDisplayDelegate
 
-extension ChatViewController: MessagesDisplayDelegate{
+extension ChatViewController: MessagesDisplayDelegate {
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ? .white : #colorLiteral(red: 0.8211756349, green: 0.5609566569, blue: 1, alpha: 1)
     }
@@ -203,7 +203,7 @@ extension ChatViewController: MessagesDisplayDelegate{
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        return .bubble
+        return isFromCurrentSender(message: message) ? .bubbleTail(.bottomRight, .pointedEdge) : .bubbleTail(.bottomLeft, .pointedEdge)
     }
 }
 
@@ -211,7 +211,7 @@ extension ChatViewController: MessagesDisplayDelegate{
 
 //MARK: - configureMessageInputBar
 
-extension ChatViewController{
+extension ChatViewController {
     
     func configureMessageInputBar() {
         messageInputBar.isTranslucent = true
@@ -255,7 +255,7 @@ extension ChatViewController{
     }
     
     
-    func configureCameraIcon(){
+    func configureCameraIcon() {
         let cameraItem = InputBarButtonItem(type: .system)
         cameraItem.tintColor = #colorLiteral(red: 0.8211756349, green: 0.5609566569, blue: 1, alpha: 1)
         let cameraImage = UIImage(systemName: "camera")

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InsertableTextField: UITextField{
+class InsertableTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -69,7 +69,7 @@ class InsertableTextField: UITextField{
 
 import SwiftUI
 
-struct TextFieldProvider: PreviewProvider{
+struct TextFieldProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

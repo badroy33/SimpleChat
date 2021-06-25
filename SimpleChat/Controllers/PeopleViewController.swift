@@ -19,7 +19,7 @@ class PeopleViewController: UIViewController {
     
     private let currentUser: UserModel
     
-    enum Section: Int, CaseIterable{
+    enum Section: Int, CaseIterable {
         case users
         func description(usersCount: Int) -> String{
             switch self {
@@ -30,7 +30,7 @@ class PeopleViewController: UIViewController {
     }
     
     
-    init(currentUser: UserModel){
+    init(currentUser: UserModel) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
         title = currentUser.username
@@ -66,14 +66,14 @@ class PeopleViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Sign out", style:  .plain, target: self, action: #selector(signOut))
     }
     
-    @objc func signOut(){
+    @objc func signOut() {
         let ac = UIAlertController(title: "", message: "Do you wan't to sign out?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let signOutAction = UIAlertAction(title: "Sign out", style: .destructive) { (_) in
-            do{
+            do {
                 try Auth.auth().signOut()
                 UIApplication.shared.keyWindow?.rootViewController = AuthViewController()
-            }catch{
+            } catch {
                 print("Error \(error.localizedDescription)")
             }
         }
@@ -83,7 +83,7 @@ class PeopleViewController: UIViewController {
         present(ac, animated: true, completion: nil)
     }
 
-    private func setUpCollectionView(){
+    private func setUpCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: self.getCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleHeight]
         collectionView.backgroundColor = UIColor.mainWhiteColor()
@@ -97,12 +97,12 @@ class PeopleViewController: UIViewController {
     }
     
     
-    private func setUpNavigationBar(){
+    private func setUpNavigationBar() {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     
-    private func setUpSearchBar(){
+    private func setUpSearchBar() {
         navigationController?.navigationBar.barTintColor = UIColor.mainWhiteColor()
         navigationController?.navigationBar.shadowImage = UIImage()
         let searchController = UISearchController(searchResultsController: nil)
@@ -118,7 +118,7 @@ class PeopleViewController: UIViewController {
         glassIconView?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
     
-    func reloadData(with searchText: String?){
+    func reloadData(with searchText: String?) {
         var snapShot = NSDiffableDataSourceSnapshot<Section, UserModel>()
         
         let filtered = users.filter { (user) -> Bool in
@@ -138,7 +138,7 @@ class PeopleViewController: UIViewController {
 
 //MARK: - UICollectionViewDelegate
 
-extension PeopleViewController: UICollectionViewDelegate{
+extension PeopleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let user = self.diffableDataSource.itemIdentifier(for: indexPath) else { return }
         let profileVC = ProfileViewController(user: user)
@@ -149,8 +149,8 @@ extension PeopleViewController: UICollectionViewDelegate{
 
 //MARK: - DataSource
 
-extension PeopleViewController{
-    private func createDataSource(){
+extension PeopleViewController {
+    private func createDataSource() {
         diffableDataSource = UICollectionViewDiffableDataSource<Section, UserModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, user) -> UICollectionViewCell? in
             
             guard let section = Section(rawValue: indexPath.section) else {fatalError("unknown section kind")}
@@ -177,7 +177,7 @@ extension PeopleViewController{
 
 // MARK: - Setup layout
 
-extension PeopleViewController{
+extension PeopleViewController {
     
     private func getCompositionalLayout() -> UICollectionViewLayout {
         let compositionalLayout = UICollectionViewCompositionalLayout { (sectionIndex, layout) -> NSCollectionLayoutSection? in
@@ -193,7 +193,7 @@ extension PeopleViewController{
         return compositionalLayout
     }
     
-    private func createUserSection() -> NSCollectionLayoutSection{
+    private func createUserSection() -> NSCollectionLayoutSection {
         
         let spacing = CGFloat(15)
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -211,7 +211,7 @@ extension PeopleViewController{
         return section
     }
     
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem{
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let sectionSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return sectionHeader
@@ -220,7 +220,7 @@ extension PeopleViewController{
 
 // MARK: - UISearchBarDelegate
 
-extension PeopleViewController: UISearchBarDelegate{
+extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.reloadData(with: searchText)
     }
@@ -233,7 +233,7 @@ extension PeopleViewController: UISearchBarDelegate{
 
 import SwiftUI
 
-struct PeopleVCProvider: PreviewProvider{
+struct PeopleVCProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

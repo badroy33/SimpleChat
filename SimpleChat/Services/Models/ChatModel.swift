@@ -14,7 +14,7 @@ struct ChatModel: Hashable, Decodable {
     let lastMessageContent: String
     var friendID: String
     
-    var representation: [String : Any]{
+    var representation: [String : Any] {
         var rep = ["friendUsername" : friendUsername]
         rep["friendImageStringURL"] = friendImageStringURL
         rep["lastMessage"] = lastMessageContent
@@ -22,14 +22,14 @@ struct ChatModel: Hashable, Decodable {
         return rep
     }
     
-    init(friendUsername: String, friendImageStringURL: String, lastMessageContent: String, friendID: String){
+    init(friendUsername: String, friendImageStringURL: String, lastMessageContent: String, friendID: String) {
         self.friendUsername = friendUsername
         self.friendImageStringURL = friendImageStringURL
         self.lastMessageContent = lastMessageContent
         self.friendID = friendID
     }
     
-    init?(queryDocumentSnapshot: QueryDocumentSnapshot){
+    init?(queryDocumentSnapshot: QueryDocumentSnapshot) {
         let data = queryDocumentSnapshot.data()
         
         guard let friendUsername = data["friendUsername"] as? String,
@@ -47,7 +47,7 @@ struct ChatModel: Hashable, Decodable {
         hasher.combine(friendID)
     }
     
-    static func == (lhs: ChatModel, rhs: ChatModel) -> Bool{
+    static func == (lhs: ChatModel, rhs: ChatModel) -> Bool {
         return lhs.friendID == rhs.friendID
     }
 }

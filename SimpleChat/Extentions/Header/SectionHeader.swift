@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SectionHeader: UICollectionReusableView{
+class SectionHeader: UICollectionReusableView {
     
     static let reuseId = "SectionHeader"
     

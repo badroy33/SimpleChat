@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class SignUpVIewController: UIViewController{
+class SignUpVIewController: UIViewController {
     
     let helloLabel = UILabel(text: "Hello, and welcome", font: UIFont.avenirNextMedium27())
     let emailLabel = UILabel(text: "Email")
@@ -45,7 +45,7 @@ class SignUpVIewController: UIViewController{
     }
     
     
-    @objc private func signUpButtonTapped(){
+    @objc private func signUpButtonTapped() {
 
         AuthService.shared.register(email: emailTextField.text, password: passwordTextField.text, confirmPassword: confirmPasswordTextField.text) { (result) in
             switch result{
@@ -57,13 +57,13 @@ class SignUpVIewController: UIViewController{
         }
     }
     
-    @objc private func loginButtonTapped(){
+    @objc private func loginButtonTapped() {
         dismiss(animated: true) {
             self.delegate?.tologinVC()
         }
     }
     
-    private func textFieldsSetUp(){
+    private func textFieldsSetUp() {
         self.emailTextField.textColor = .black
         self.passwordTextField.textColor = .black
         self.confirmPasswordTextField.textColor = .black
@@ -82,8 +82,8 @@ class SignUpVIewController: UIViewController{
 
 //MARK: = setupConstraints()
 
-extension SignUpVIewController{
-    private func setupConstraints(){
+extension SignUpVIewController {
+    private func setupConstraints() {
         let emailView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 10)
         let passwordView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 10)
         let confirmPasswordView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 10)
@@ -123,7 +123,7 @@ extension SignUpVIewController{
 
 import SwiftUI
 
-struct SignUpVCProvider: PreviewProvider{
+struct SignUpVCProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

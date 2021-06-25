@@ -27,7 +27,7 @@ class SetProfileInfoViewController: UIViewController {
 
     private var currentUser: User
     
-    init(currentUser: User){
+    init(currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
         
@@ -69,14 +69,14 @@ class SetProfileInfoViewController: UIViewController {
 //MARK: - Actions
 
 extension SetProfileInfoViewController{
-    @objc func continueButtonTapped(){
+    @objc func continueButtonTapped() {
         FirestoreService.shared.saveProfileWith(id: currentUser.uid,
                                                 email: currentUser.email!,
                                                 username: fullNameTextField.text,
                                                 avatarImage: addPhotoView.avatarImage.image,
                                                 description: aboutMeTextField.text,
                                                 sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
-            switch result{
+            switch result {
             case .success(let muser):
                 let mainTabBarController = MainTabBarController(currentUser: muser)
                 mainTabBarController.modalPresentationStyle = .fullScreen
@@ -87,7 +87,7 @@ extension SetProfileInfoViewController{
         }
     }
     
-    @objc func plusButtontapped(){
+    @objc func plusButtontapped() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
@@ -98,7 +98,7 @@ extension SetProfileInfoViewController{
 
 // MARK: - Setup constraints
 
-extension SetProfileInfoViewController{
+extension SetProfileInfoViewController {
     private func setUpConstraints(){
         let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField], axis: .vertical, spacing: 10)
         let aboutMeStackView = UIStackView(arrangedSubviews: [aboutMeLabel, aboutMeTextField], axis: .vertical, spacing: 10)
@@ -136,7 +136,7 @@ extension SetProfileInfoViewController{
 //MARK: - UINavigationControllerDelegate, UIImagePickerControllerDelegate
 
 
-extension SetProfileInfoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+extension SetProfileInfoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
@@ -150,8 +150,8 @@ extension SetProfileInfoViewController: UINavigationControllerDelegate, UIImageP
 
 import SwiftUI
 
-struct SetProfileInfoVCProvider: PreviewProvider{
-    static var previews: some View{
+struct SetProfileInfoVCProvider: PreviewProvider {
+    static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
     

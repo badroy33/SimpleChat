@@ -15,8 +15,8 @@ enum AuthError {
     case serverError
 }
 
-extension AuthError: LocalizedError{
-    var errorDescription: String?{
+extension AuthError: LocalizedError {
+    var errorDescription: String? {
         switch self {
         case .notFilled:
             return NSLocalizedString("Textfields are not filled", comment: "")

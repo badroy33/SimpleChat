@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
     }
 
     
-    @objc private func loginButtonTapped(){
+    @objc private func loginButtonTapped() {
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text) { (result) in
             switch result{
             case .success(let user):
@@ -66,13 +66,13 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @objc private func signUpButtonTapped(){
+    @objc private func signUpButtonTapped() {
         dismiss(animated: true) {
             self.delegate?.toSignUpVC()
         }
     }
     
-    @objc private func googleButtonTapped(){
+    @objc private func googleButtonTapped() {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
     }
@@ -94,9 +94,9 @@ class LoginViewController: UIViewController {
 
 // MARK: - Setup constraints
 
-extension LoginViewController{
+extension LoginViewController {
     
-    private func setUpConstraints(){
+    private func setUpConstraints() {
         googleButton.addGoogleImage()
         
         let loginWithGoogleView = ButtonsViews(label: loginWithLabel, button: googleButton)
@@ -155,8 +155,8 @@ extension LoginViewController{
 
 import SwiftUI
 
-struct LoginVCProvider: PreviewProvider{
-    static var previews: some View{
+struct LoginVCProvider: PreviewProvider {
+    static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
     

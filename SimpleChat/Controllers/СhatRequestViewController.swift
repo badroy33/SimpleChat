@@ -21,7 +21,7 @@ class ChatRequestViewController: UIViewController {
     
     weak var delegate: WaitingChatsNavigation?
     
-    init(chat: ChatModel){
+    init(chat: ChatModel) {
         self.chat = chat
         nameLabel.text = chat.friendUsername
         profileImageView.sd_setImage(with: URL(string: chat.friendImageStringURL), completed: nil)
@@ -41,13 +41,13 @@ class ChatRequestViewController: UIViewController {
         acceptButton.addTarget(self, action: #selector(acceptButtonTapped), for: .touchUpInside)
     }
     
-    @objc func denyButtonTapped(){
+    @objc func denyButtonTapped() {
         dismiss(animated: true) {
             self.delegate?.removeWaitingChat(chat: self.chat)
         }
     }
     
-    @objc func acceptButtonTapped(){
+    @objc func acceptButtonTapped() {
         dismiss(animated: true) {
             self.delegate?.changeToCurrent(chat: self.chat)
         }
@@ -61,9 +61,9 @@ class ChatRequestViewController: UIViewController {
 
 // MARK: -  setUpConstraints(), editElements()
 
-extension ChatRequestViewController{
+extension ChatRequestViewController {
     
-    private func editElements(){
+    private func editElements() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ extension ChatRequestViewController{
     }
     
     
-    private func setUpConstraints(){
+    private func setUpConstraints() {
         
         
         let stackView = UIStackView(arrangedSubviews: [acceptButton, denyButton], axis: .horizontal, spacing: 8)
@@ -135,7 +135,7 @@ extension ChatRequestViewController{
 
 //import SwiftUI
 //
-//struct ChatRequestVCProvider: PreviewProvider{
+//struct ChatRequestVCProvider: PreviewProvider {
 //    static var previews: some View{
 //        ContainerView().edgesIgnoringSafeArea(.all)
 //    }

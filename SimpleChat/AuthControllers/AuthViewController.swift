@@ -38,15 +38,15 @@ class AuthViewController: UIViewController {
         GIDSignIn.sharedInstance()?.delegate = self
     }
     
-    @objc private func emailButtonTapped(){
+    @objc private func emailButtonTapped() {
         present(signUpVC, animated: true, completion: nil)
     }
     
-    @objc private func loginButtonTapped(){
+    @objc private func loginButtonTapped() {
         present(loginVC, animated: true, completion: nil)
     }
     
-    @objc private func googleButtonTapped(){
+    @objc private func googleButtonTapped() {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
     }
@@ -60,7 +60,7 @@ class AuthViewController: UIViewController {
 
 //MARK: - GIDSignInDelegate
 
-extension AuthViewController: GIDSignInDelegate{
+extension AuthViewController: GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         AuthService.shared.loginWithGoogle(user: user, error: error) { (result) in
@@ -88,7 +88,7 @@ extension AuthViewController: GIDSignInDelegate{
 
 extension AuthViewController {
     
-    private func setUpConstraints(){
+    private func setUpConstraints() {
         googleButton.addGoogleImage()
         
         let googleView = ButtonsViews(label: firstLabel, button: googleButton)
@@ -117,7 +117,7 @@ extension AuthViewController {
 }
 
 
-extension AuthViewController: AuthNavigationDelegate{
+extension AuthViewController: AuthNavigationDelegate {
     func tologinVC() {
         present(loginVC, animated: true, completion: nil)
     }
@@ -131,8 +131,8 @@ extension AuthViewController: AuthNavigationDelegate{
 
 import SwiftUI
 
-struct AuthVCProvider: PreviewProvider{
-    static var previews: some View{
+struct AuthVCProvider: PreviewProvider {
+    static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.all)
     }
     

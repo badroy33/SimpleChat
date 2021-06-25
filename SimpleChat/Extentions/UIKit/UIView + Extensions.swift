@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIView{
+extension UIView {
     func applyGradients(cornerRadius: CGFloat) {
         self.backgroundColor = nil
         self.layoutIfNeeded()

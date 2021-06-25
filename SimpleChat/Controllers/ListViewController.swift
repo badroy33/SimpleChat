@@ -16,7 +16,7 @@ class ListViewController: UIViewController {
     
     private var currentChatsListener: ListenerRegistration?
     
-    enum Section: Int, CaseIterable{
+    enum Section: Int, CaseIterable {
         case waitingChats, currentChats
         
         func setHeader() -> String{
@@ -71,7 +71,7 @@ class ListViewController: UIViewController {
         })
     }
     
-    init(currentUser: UserModel){
+    init(currentUser: UserModel) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
         title = currentUser.username
@@ -85,7 +85,7 @@ class ListViewController: UIViewController {
         waitingChatsListener?.remove()
     }
     
-    private func setUpCollectionView(){
+    private func setUpCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: self.getCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleHeight]
         collectionView.backgroundColor = UIColor.mainWhiteColor()
@@ -100,12 +100,12 @@ class ListViewController: UIViewController {
     }
     
     
-    private func setUpNavigationBar(){
+    private func setUpNavigationBar() {
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
-    private func setUpSearchBar(){
+    private func setUpSearchBar() {
         navigationController?.navigationBar.barTintColor = UIColor.mainWhiteColor()
         navigationController?.navigationBar.shadowImage = UIImage()
         let searchController = UISearchController(searchResultsController: nil)
@@ -122,7 +122,7 @@ class ListViewController: UIViewController {
         glassIconView?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
     
-    func reloadData(){
+    func reloadData() {
         var snapShot = NSDiffableDataSourceSnapshot<Section, ChatModel>()
         snapShot.appendSections([.waitingChats, .currentChats])
         snapShot.appendItems(waitingChats, toSection: .waitingChats)
@@ -138,11 +138,11 @@ class ListViewController: UIViewController {
 
 // MARK: - Data Source
 
-extension ListViewController{
+extension ListViewController {
     
     
 
-    private func createDataSource(){
+    private func createDataSource() {
         diffableDataSource = UICollectionViewDiffableDataSource<Section, ChatModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, chat) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section") }
             
@@ -173,7 +173,7 @@ extension ListViewController{
 
 // MARK: - Setup layout
 
-extension ListViewController{
+extension ListViewController {
     
     private func getCompositionalLayout() -> UICollectionViewLayout {
         let compositionalLayout = UICollectionViewCompositionalLayout { (sectionIndex, layout) -> NSCollectionLayoutSection? in
@@ -192,7 +192,7 @@ extension ListViewController{
         return compositionalLayout
     }
     
-    private func createCurrentChatsSection() -> NSCollectionLayoutSection{
+    private func createCurrentChatsSection() -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -211,7 +211,7 @@ extension ListViewController{
         return section
     }
     
-    private func createWaitingChatsSection() -> NSCollectionLayoutSection{
+    private func createWaitingChatsSection() -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(1))
@@ -233,7 +233,7 @@ extension ListViewController{
         return section
     }
     
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem{
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let sectionSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return sectionHeader
@@ -242,7 +242,7 @@ extension ListViewController{
 
 // MARK: - UICollectionViewDelegate
 
-extension ListViewController: UICollectionViewDelegate{
+extension ListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let chat = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
         guard let section = Section(rawValue: indexPath.section) else { return }
@@ -262,7 +262,7 @@ extension ListViewController: UICollectionViewDelegate{
 
 // MARK: - WaitingChatsNavigation
 
-extension ListViewController: WaitingChatsNavigation{
+extension ListViewController: WaitingChatsNavigation {
     func removeWaitingChat(chat: ChatModel) {
         FirestoreService.shared.deleteWaitingChat(chat: chat) { (result) in
             switch result{
@@ -290,7 +290,7 @@ extension ListViewController: WaitingChatsNavigation{
 
 // MARK: - UISearchBarDelegate
 
-extension ListViewController: UISearchBarDelegate{
+extension ListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     }
     
@@ -302,7 +302,7 @@ extension ListViewController: UISearchBarDelegate{
 
 import SwiftUI
 
-struct ListVCProvider: PreviewProvider{
+struct ListVCProvider: PreviewProvider {
     static var previews: some View{
         ContainerView().edgesIgnoringSafeArea(.all)
     }

@@ -23,11 +23,11 @@ class StorageService{
         return storageRef.child("chats")
     }
     
-    private var currentUserId: String{
+    private var currentUserId: String {
         return Auth.auth().currentUser!.uid
     }
     
-    func upload(image: UIImage, completion: @escaping (Result<URL,Error>)-> Void){
+    func upload(image: UIImage, completion: @escaping (Result<URL,Error>)-> Void) {
         guard let scaledImage = image.scaledToSafeUploadSize, let imageData = scaledImage.jpegData(compressionQuality: 0.4) else { return }
         
         let metadata = StorageMetadata()
@@ -52,7 +52,7 @@ class StorageService{
         
     }
     
-    func uploadImageMessage(image: UIImage, to chat: ChatModel, completion: @escaping (Result<URL,Error>)-> Void){
+    func uploadImageMessage(image: UIImage, to chat: ChatModel, completion: @escaping (Result<URL,Error>)-> Void) {
         guard let scaledImage = image.scaledToSafeUploadSize, let imageData = scaledImage.jpegData(compressionQuality: 0.4) else { return }
         
         let metadata = StorageMetadata()
@@ -78,7 +78,7 @@ class StorageService{
     }//uploadImageMessage
     
     
-    func downloadImage(url: URL, completion: @escaping (Result<UIImage?,Error>)-> Void){
+    func downloadImage(url: URL, completion: @escaping (Result<UIImage?,Error>)-> Void) {
         let ref = Storage.storage().reference(forURL: url.absoluteString)
         let megaByte = Int64(1 * 1024 * 1024)
         ref.getData(maxSize: megaByte) { data, error in
