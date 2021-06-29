@@ -45,6 +45,8 @@ class UserCell: UICollectionViewCell, SelfCellConfiguration {
         self.userNameLabel.text = user.username
         guard let url = URL(string: user.avatarStringURL) else { return }
         userImageView.sd_setImage(with: url, completed: nil)
+        userImageView.contentMode = .scaleAspectFill
+        userImageView.clipsToBounds = true
     }
     
     private func setUpConstraints() {

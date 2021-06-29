@@ -16,13 +16,15 @@ class WaitingChatCell: UICollectionViewCell, SelfCellConfiguration {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .yellow
+        self.backgroundColor = .white
         setUpConstraints()
     }
     
     func configure<U>(with value: U) where U : Hashable {
         guard let chat: ChatModel = value as? ChatModel else { return }
         self.imageView.sd_setImage(with: URL(string: chat.friendImageStringURL), completed: nil)
+        self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
     }
     
     required init?(coder: NSCoder) {

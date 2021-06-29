@@ -16,7 +16,7 @@ extension UIColor{
     }
     
     static func mainWhiteColor() -> UIColor{
-        return #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 1)
+        return #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
     }
     
 }

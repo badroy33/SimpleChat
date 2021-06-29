@@ -45,6 +45,8 @@
 		97A5BB2A2642FFA20024680E /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A5BB292642FFA20024680E /* SectionHeader.swift */; };
 		97BFE03A26374E7F0058E407 /* ButtonsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03926374E7F0058E407 /* ButtonsViews.swift */; };
 		97BFE03E263759AD0058E407 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE03D263759AD0058E407 /* UIStackView + Extension.swift */; };
+		97D2E8072688D27F00DFB83B /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D2E8062688D27F00DFB83B /* AboutMeViewController.swift */; };
+		97D2E80B268B522500DFB83B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 97D2E80A268B522500DFB83B /* .gitignore */; };
 		97E7C548265AB4F300628F45 /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C547265AB4F300628F45 /* ListenerService.swift */; };
 		97E7C588265BE88000628F45 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C587265BE88000628F45 /* MessageModel.swift */; };
 		97E7C58B265E97D400628F45 /* WaitingChatsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7C58A265E97D400628F45 /* WaitingChatsNavigation.swift */; };
@@ -104,6 +106,8 @@
 		97A5BB292642FFA20024680E /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		97BFE03926374E7F0058E407 /* ButtonsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViews.swift; sourceTree = "<group>"; };
 		97BFE03D263759AD0058E407 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
+		97D2E8062688D27F00DFB83B /* AboutMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
+		97D2E80A268B522500DFB83B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		97E7C547265AB4F300628F45 /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		97E7C587265BE88000628F45 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		97E7C58A265E97D400628F45 /* WaitingChatsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsNavigation.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		97238A7F261B893000A328BC = {
 			isa = PBXGroup;
 			children = (
+				97D2E80A268B522500DFB83B /* .gitignore */,
 				97238A8A261B893000A328BC /* SimpleChat */,
 				97238A89261B893000A328BC /* Products */,
 				185679E8C299C583EDD3294C /* Pods */,
@@ -223,6 +228,7 @@
 				974F782E264ACFB000E51723 /* ProfileViewController.swift */,
 				974F783A264D4E9300E51723 /* СhatRequestViewController.swift */,
 				974F6E212663F591004E2B6F /* ChatViewController.swift */,
+				97D2E8062688D27F00DFB83B /* AboutMeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				97238A98261B893200A328BC /* LaunchScreen.storyboard in Resources */,
 				97EA30822645E4C3006C9CDC /* currentChats.json in Resources */,
 				97238A95261B893200A328BC /* Assets.xcassets in Resources */,
+				97D2E80B268B522500DFB83B /* .gitignore in Resources */,
 				9753ACBE264E971C00187220 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +484,7 @@
 				97A5BB242642E75E0024680E /* SelfCellConfiguration.swift in Sources */,
 				97276C6426581CC4002D42E2 /* StorageService.swift in Sources */,
 				97BFE03E263759AD0058E407 /* UIStackView + Extension.swift in Sources */,
+				97D2E8072688D27F00DFB83B /* AboutMeViewController.swift in Sources */,
 				97EA308526472BF3006C9CDC /* UserCell.swift in Sources */,
 				976F9508263983ED004A51C1 /* SetProfileInfoViewController.swift in Sources */,
 				97EA308926472EBA006C9CDC /* UIViewController + Extention.swift in Sources */,

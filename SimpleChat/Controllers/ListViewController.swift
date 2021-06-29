@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class ListViewController: UIViewController {
     
@@ -69,6 +70,9 @@ class ListViewController: UIViewController {
                 self.showAlert(with: "Error", message: error.localizedDescription)
             }
         })
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Sign out", style:  .plain, target: self, action: #selector(signOut))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(profile))
     }
     
     init(currentUser: UserModel) {
@@ -132,6 +136,33 @@ class ListViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+}
+
+
+// MARK: - objc methods
+
+extension ListViewController {
+    @objc func signOut() {
+        let ac = UIAlertController(title: "", message: "Do you wan't to sign out?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let signOutAction = UIAlertAction(title: "Sign out", style: .destructive) { (_) in
+            do {
+                try Auth.auth().signOut()
+                UIApplication.shared.keyWindow?.rootViewController = AuthViewController()
+            } catch {
+                print("Error \(error.localizedDescription)")
+            }
+        }
+        ac.addAction(cancelAction)
+        ac.addAction(signOutAction)
+        
+        present(ac, animated: true, completion: nil)
+    }
+    
+    @objc func profile() {
+        let aboutMeVC = AboutMeViewController(currentUser: currentUser)
+        present(aboutMeVC, animated: true, completion: nil)
     }
 }
 

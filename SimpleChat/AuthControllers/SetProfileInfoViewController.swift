@@ -77,10 +77,17 @@ extension SetProfileInfoViewController{
                                                 description: aboutMeTextField.text,
                                                 sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { (result) in
             switch result {
-            case .success(let muser):
-                let mainTabBarController = MainTabBarController(currentUser: muser)
-                mainTabBarController.modalPresentationStyle = .fullScreen
-                self.present(mainTabBarController, animated: true, completion: nil)
+            case .success(_):
+                FirestoreService.shared.getUserData(from: self.currentUser) { result in
+                    switch result {
+                    case .success(let muser):
+                        let mainTabBarController = MainTabBarController(currentUser: muser)
+                        mainTabBarController.modalPresentationStyle = .fullScreen
+                        self.present(mainTabBarController, animated: true, completion: nil)
+                    case .failure(let error):
+                        self.showAlert(with: "Error", message: error.localizedDescription)
+                    }
+                }
             case .failure(let error):
                 self.showAlert(with: "Error", message: error.localizedDescription)
             }

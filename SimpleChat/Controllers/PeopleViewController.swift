@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import SDWebImage
 
 class PeopleViewController: UIViewController {
 
@@ -64,6 +65,8 @@ class PeopleViewController: UIViewController {
         })
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Sign out", style:  .plain, target: self, action: #selector(signOut))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(profile))
+        
     }
     
     @objc func signOut() {
@@ -81,6 +84,11 @@ class PeopleViewController: UIViewController {
         ac.addAction(signOutAction)
         
         present(ac, animated: true, completion: nil)
+    }
+    
+    @objc func profile() {
+        let aboutMeVC = AboutMeViewController(currentUser: currentUser)
+        present(aboutMeVC, animated: true, completion: nil)
     }
 
     private func setUpCollectionView() {

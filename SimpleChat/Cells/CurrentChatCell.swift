@@ -20,12 +20,15 @@ class CurrentChatCell: UICollectionViewCell, SelfCellConfiguration {
     override init(frame: CGRect) {
         super .init(frame: frame)
         setUpConstraints()
+        backgroundColor = .white
     }
     
     
     func configure<U>(with value: U) where U : Hashable {
         guard let chat: ChatModel = value as? ChatModel else { return }
         userImageView.sd_setImage(with: URL(string: chat.friendImageStringURL), completed: nil)
+        userImageView.contentMode = .scaleAspectFill
+        userImageView.clipsToBounds = true
         userNameLabel.text = chat.friendUsername
         lastMessageLabel.text = chat.lastMessageContent
     }

@@ -11,12 +11,12 @@ class MainTabBarController: UITabBarController{
     
     private let currentUser: UserModel
     
-    init(currentUser: UserModel = UserModel(username: "Maksym Levytskyi",
-                                            email: "hello alo",
-                                            avatarStringURL: "helloalo",
-                                            description: "heloalo",
-                                            sex: "helo alo",
-                                            id: "helo alo")) {
+    init(currentUser: UserModel = UserModel(username: "",
+                                            email: "",
+                                            avatarStringURL: "",
+                                            description: "",
+                                            sex: "",
+                                            id: "")) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
     }
@@ -29,7 +29,6 @@ class MainTabBarController: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = UIColor.buttonBackgroungColorPurple()
-        
         tabBar.barTintColor = .white
         let boldConfig = UIImage.SymbolConfiguration(weight: .medium)
         

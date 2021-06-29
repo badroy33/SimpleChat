@@ -12,7 +12,7 @@ class ChatRequestViewController: UIViewController {
     
     let containerView = UIView()
     let profileImageView = UIImageView(image: #imageLiteral(resourceName: "human4"), contentMode: .scaleAspectFill)
-    let nameLabel = UILabel(text: "Rob Shnider", font: .systemFont(ofSize: 20, weight: .light),textColor: .black)
+    let nameLabel = UILabel(text: "", font: .systemFont(ofSize: 20, weight: .light),textColor: .black)
     let acceptMessageLabel = UILabel(text: "You can accept a new conversation.", font: .systemFont(ofSize: 18, weight: .light), textColor: UIColor.buttonDarkTextColor())
     let acceptButton = UIButton(title: "Accept", titleColor: .white, font: .laoSangamMN20(), backgroundColor: .red, cornerRadius: 10)
     let denyButton = UIButton(title: "Deny", titleColor: #colorLiteral(red: 0.8352941176, green: 0.2, blue: 0.2, alpha: 1), font: .laoSangamMN20(), backgroundColor: .white, cornerRadius: 10)
